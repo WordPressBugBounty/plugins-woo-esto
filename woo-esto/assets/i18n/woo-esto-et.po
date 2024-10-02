@@ -1,0 +1,828 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Woocommerce ESTO\n"
+"POT-Creation-Date: 2024-04-09 15:53+0300\n"
+"PO-Revision-Date: 2024-04-09 15:53+0300\n"
+"Last-Translator: \n"
+"Language-Team: ESTO AS <info@esto.ee>\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+"X-Poedit-SearchPath-2: ../..\n"
+
+#: ../../assets/view/calculator-archive.php:6
+#: ../../assets/view/calculator.php:6 ../view/calculator-archive.php:6
+#: ../view/calculator.php:6
+#, php-format
+msgid "Pay in three equal instalments 3 x %s"
+msgstr "Tasu kolme võrdse maksena 3 x %s"
+
+#: ../../assets/view/calculator-archive.php:6
+#: ../../assets/view/calculator.php:6 ../view/calculator-archive.php:6
+#: ../view/calculator.php:6
+#, php-format
+msgid "Monthly payment from %s"
+msgstr "Kuumakse al. %s"
+
+#: ../../assets/view/calculator-settings.php:36
+#: ../view/calculator-settings.php:36
+msgid "ESTO Woocommerce Settings"
+msgstr "ESTO WooCommerce sätted"
+
+#: ../../assets/view/calculator-settings.php:44
+#: ../view/calculator-settings.php:44
+msgid "Enable product monthly payment"
+msgstr ""
+
+#: ../../assets/view/calculator-settings.php:51
+#: ../../assets/view/calculator-settings.php:72
+#: ../view/calculator-settings.php:51 ../view/calculator-settings.php:72
+msgid "Product monthly payment URL"
+msgstr ""
+
+#: ../../assets/view/calculator-settings.php:84
+#: ../view/calculator-settings.php:84
+msgid "Default logo"
+msgstr ""
+
+#: ../../assets/view/calculator-settings.php:146
+#: ../view/calculator-settings.php:146
+#, php-format
+msgid "%s logo"
+msgstr "%s logo"
+
+#: ../../assets/view/calculator-settings.php:162
+#: ../view/calculator-settings.php:162
+#, php-format
+msgid "%s text"
+msgstr ""
+
+#: ../../assets/view/calculator-settings.php:163
+#: ../../assets/view/calculator-settings.php:177
+#: ../view/calculator-settings.php:163 ../view/calculator-settings.php:177
+#, php-format
+msgid ""
+"%s will be replaced by monthly payment value, for instance \"Monthly payment "
+"from %s\" will become \"Monthly payment from 7.4€ / 6 months\". Leave empty "
+"to use default text."
+msgstr ""
+
+#: ../../assets/view/calculator-settings.php:176
+#: ../view/calculator-settings.php:176
+msgid "Text"
+msgstr ""
+
+#: ../../assets/view/calculator-settings.php:188
+#: ../view/calculator-settings.php:188
+msgid "Override logo width (px)"
+msgstr ""
+
+#: ../../assets/view/calculator-settings.php:195
+#: ../view/calculator-settings.php:195
+msgid "Override logo height (px)"
+msgstr ""
+
+#: ../../assets/view/calculator-settings.php:202
+#: ../view/calculator-settings.php:202
+msgid "Show Esto 3 monthly payment instead of the regular"
+msgstr "Näita Esto 3 kuumakset tavalise asemel"
+
+#: ../../assets/view/calculator-settings.php:209
+#: ../view/calculator-settings.php:209
+msgid "Show monthly payment on shop and category pages"
+msgstr "Näita kuumakset poe ja kategooriate vaadetes"
+
+#: ../../assets/view/calculator-settings.php:217
+#: ../view/calculator-settings.php:217
+msgid "Minimum product price to show monthly payment"
+msgstr ""
+
+#: ../../assets/view/calculator-settings.php:219
+#: ../../assets/view/calculator-settings.php:230
+#: ../view/calculator-settings.php:219 ../view/calculator-settings.php:230
+#, php-format
+msgid "Leave empty to use default, which is currently %s"
+msgstr ""
+
+#: ../../assets/view/calculator-settings.php:228
+#: ../view/calculator-settings.php:228
+msgid "Maximum product price to show monthly payment"
+msgstr ""
+
+#: ../../assets/view/calculator-settings.php:240
+#: ../view/calculator-settings.php:240
+msgid "Save Settings"
+msgstr "Salvesta sätted"
+
+#: ../../assets/view/calculator-settings.php:246
+#: ../view/calculator-settings.php:246
+msgid "What to do when the calculator does not show up"
+msgstr ""
+
+#: ../../assets/view/calculator-settings.php:250
+#: ../view/calculator-settings.php:250
+msgid "Ensure product price is sufficiently high"
+msgstr ""
+
+#: ../../assets/view/calculator-settings.php:251
+#: ../view/calculator-settings.php:251
+msgid ""
+"Try inserting the shortcode [esto_monthly_payment] at your chosen location "
+"in product loop or single view template"
+msgstr ""
+
+#: ../../assets/view/calculator.php:12 ../view/calculator.php:12
+#, php-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] "%d kuu"
+msgstr[1] "%d kuud"
+
+#: ../../esto-payment.php:105
+msgid "Settings"
+msgstr "Sätted"
+
+#: ../../includes/Payment.php:81
+msgid "ESTO payment gateway"
+msgstr "ESTO maksemoodul"
+
+#: ../../includes/Payment.php:89
+msgid "Payment module for paying with ESTO regular hire purchase"
+msgstr "Maksemoodul ESTO järelmaksuga maksmiseks"
+
+#: ../../includes/Payment.php:146
+msgid "Live mode"
+msgstr "Live olek"
+
+#: ../../includes/Payment.php:147
+msgid "Test mode"
+msgstr "Test olek"
+
+#: ../../includes/Payment.php:151
+msgid "Estonia"
+msgstr "Eesti"
+
+#: ../../includes/Payment.php:152
+msgid "Lithuania"
+msgstr "Leedu"
+
+#: ../../includes/Payment.php:153
+msgid "Latvia"
+msgstr "Läti"
+
+#: ../../includes/Payment.php:158
+#: ../../includes/class-wc-esto-card-payment.php:27
+#: ../../includes/class-wc-esto-pay-later-payment.php:23
+#: ../../includes/class-wc-esto-pay-payment.php:32
+#: ../../includes/class-wc-esto-x-payment.php:29
+#: ../../includes/class-wc-pay-later-payment.php:24
+msgid "Enable/Disable"
+msgstr "Luba/Keela"
+
+#: ../../includes/Payment.php:160
+msgid "Enable ESTO payment module"
+msgstr "Luba ESTO maksemoodul"
+
+#: ../../includes/Payment.php:164
+#: ../../includes/class-wc-esto-card-payment.php:33
+#: ../../includes/class-wc-esto-pay-later-payment.php:29
+#: ../../includes/class-wc-esto-pay-payment.php:38
+#: ../../includes/class-wc-esto-x-payment.php:35
+#: ../../includes/class-wc-pay-later-payment.php:30
+msgid "Title"
+msgstr "Pealkiri"
+
+#: ../../includes/Payment.php:166
+#: ../../includes/class-wc-esto-card-payment.php:35
+#: ../../includes/class-wc-esto-pay-later-payment.php:31
+#: ../../includes/class-wc-esto-pay-payment.php:40
+#: ../../includes/class-wc-esto-x-payment.php:37
+#: ../../includes/class-wc-pay-later-payment.php:32
+msgid "This controls the title which the user sees during checkout."
+msgstr "Pealkiri, mida klient näeb makseviisi valides."
+
+#: ../../includes/Payment.php:167
+msgid "ESTO hire purchase"
+msgstr "ESTO järelmaks"
+
+#: ../../includes/Payment.php:170
+#: ../../includes/class-wc-esto-card-payment.php:39
+#: ../../includes/class-wc-esto-pay-later-payment.php:35
+#: ../../includes/class-wc-esto-pay-payment.php:44
+#: ../../includes/class-wc-esto-x-payment.php:41
+#: ../../includes/class-wc-pay-later-payment.php:36
+msgid "Description"
+msgstr "Kirjeldus"
+
+#: ../../includes/Payment.php:172
+#: ../../includes/class-wc-esto-card-payment.php:41
+#: ../../includes/class-wc-esto-pay-later-payment.php:37
+#: ../../includes/class-wc-esto-pay-payment.php:46
+#: ../../includes/class-wc-esto-x-payment.php:43
+#: ../../includes/class-wc-pay-later-payment.php:38
+msgid "This controls the description which the user sees during checkout."
+msgstr "Kirjeldus, mida klient näeb makseviisi valides."
+
+#: ../../includes/Payment.php:173
+msgid ""
+"Confirm a purchase in 60 seconds and pay in installments, conveniently and "
+"quickly. Just pay later!"
+msgstr ""
+"Vormista ost 60 sekundiga ning tasu osade kaupa, mugavalt ja kiirelt. "
+"Lihtsalt maksa hiljem!"
+
+#: ../../includes/Payment.php:176
+#: ../../includes/class-wc-esto-card-payment.php:45
+msgid "Show logo"
+msgstr "Näita logo"
+
+#: ../../includes/Payment.php:178
+msgid "Show ESTO logo in checkout"
+msgstr "Näita ESTO logo kassas"
+
+#: ../../includes/Payment.php:182
+msgid "Logo"
+msgstr "Logo"
+
+#: ../../includes/Payment.php:185
+msgid "Click on logo to replace it."
+msgstr "Logo vahetamiseks vajuta sellele."
+
+#: ../../includes/Payment.php:188
+msgid "Logo below title"
+msgstr ""
+
+#: ../../includes/Payment.php:190
+msgid "Place logos below titles instead of on the right"
+msgstr ""
+
+#: ../../includes/Payment.php:194
+msgid "Payment method mode"
+msgstr "Maksemeetodi olek"
+
+#: ../../includes/Payment.php:197
+msgid ""
+"Test mode is for development purposes and does not create an actual "
+"transaction"
+msgstr "Test olek on mõeldud arenduseks ning päris ostu ESTO's ei sooritata"
+
+#: ../../includes/Payment.php:201
+msgid "Select endpoint"
+msgstr "Vali otspunkt"
+
+#: ../../includes/Payment.php:204
+msgid "Choose the correct endpoint to use, depending on your country"
+msgstr "Vali enda riigi jaoks õige endpoint"
+
+#: ../../includes/Payment.php:208
+msgid "Shop ID"
+msgstr "Poe ID"
+
+#: ../../includes/Payment.php:211 ../../includes/Payment.php:229
+#: ../../includes/Payment.php:247 ../../includes/Payment.php:265
+msgid "Shop ID is set by ESTO and can be obtained here"
+msgstr "Poe ID on seatud ESTO poolt ning on saadaval siin"
+
+#: ../../includes/Payment.php:214
+msgid "Secret API key"
+msgstr "Salajane API võti"
+
+#: ../../includes/Payment.php:216 ../../includes/Payment.php:234
+#: ../../includes/Payment.php:252 ../../includes/Payment.php:270
+msgid "Secret API key can be obtained here and should be kept secret"
+msgstr "Salajast API võtit saab siit ning seda peab hoidma salajas"
+
+#: ../../includes/Payment.php:220
+msgid "Endpoint for Estonia"
+msgstr "Endpoint Eesti jaoks"
+
+#: ../../includes/Payment.php:222
+msgid "Use different endpoint for Estonia?"
+msgstr "Kasuta Eesti jaoks erinevat endpointi?"
+
+#: ../../includes/Payment.php:226
+msgid "Shop ID for Estonia"
+msgstr "Poe ID Eesti jaoks"
+
+#: ../../includes/Payment.php:232
+msgid "Secret API key for Estonia"
+msgstr "Salajane API võti Eesti jaoks"
+
+#: ../../includes/Payment.php:238
+msgid "Endpoint for Latvia"
+msgstr "Endpoint Läti jaoks"
+
+#: ../../includes/Payment.php:240
+msgid "Use different endpoint for Latvia?"
+msgstr "Kasuta Läti jaoks erinevat endpointi?"
+
+#: ../../includes/Payment.php:244
+msgid "Shop ID for Latvia"
+msgstr "Poe ID Läti jaoks"
+
+#: ../../includes/Payment.php:250
+msgid "Secret API key for Latvia"
+msgstr "Salajane API võti Läti jaoks"
+
+#: ../../includes/Payment.php:256
+msgid "Endpoint for Lithuania"
+msgstr "Endpoint Leedu jaoks"
+
+#: ../../includes/Payment.php:258
+msgid "Use different endpoint for Lithuania?"
+msgstr "Kasuta Leedu jaoks erinevat endpointi?"
+
+#: ../../includes/Payment.php:262
+msgid "Shop ID for Lithuania"
+msgstr "Poe ID Leedu jaoks"
+
+#: ../../includes/Payment.php:268
+msgid "Secret API key for Lithuania"
+msgstr "Salajane API võti Leedu jaoks"
+
+#: ../../includes/Payment.php:274
+msgid "Min amount"
+msgstr "Minimaalne summa"
+
+#: ../../includes/Payment.php:276
+msgid "The minimum amount, when this module will be shown in checkout"
+msgstr ""
+
+#: ../../includes/Payment.php:280
+msgid "Max amount"
+msgstr "Maksimaalne summa"
+
+#: ../../includes/Payment.php:282
+msgid "The maximum amount, when this module will be shown in checkout"
+msgstr ""
+
+#: ../../includes/Payment.php:286
+msgid "Only specific countries"
+msgstr "Ainult valitud riigid"
+
+#: ../../includes/Payment.php:291
+msgid ""
+"Specify countries where this payment method is available. Takes priority "
+"over \"disabled countries\". Leave empty to sell everywhere."
+msgstr ""
+"Vali riigid, milles see maksemeetod on saadaval. Arvestatakse enne "
+"\"keelatud riigid\" valikut. Jäta tühjaks, kui soovid müüa igal pool."
+
+#: ../../includes/Payment.php:295
+msgid "Disabled countries"
+msgstr "Keelatud riigid"
+
+#: ../../includes/Payment.php:300
+msgid ""
+"Specify countries where ESTO methods should be disabled. Leave empty to sell "
+"everywhere."
+msgstr ""
+
+#: ../../includes/Payment.php:304
+msgid "Disabled countries for this method"
+msgstr "Selle maksemeetodi jaoks keelatud riigid"
+
+#: ../../includes/Payment.php:309
+msgid ""
+"Specify countries where this method should be disabled. Leave empty to sell "
+"everywhere."
+msgstr ""
+
+#: ../../includes/Payment.php:313
+msgid "Set order status to \"on-hold\" until payment confirmation"
+msgstr ""
+
+#: ../../includes/Payment.php:315
+msgid ""
+"Check this option to have orders created with \"on-hold\" status instead of "
+"\"pending\""
+msgstr ""
+
+#: ../../includes/Payment.php:319
+msgid "Order prefix"
+msgstr ""
+
+#: ../../includes/Payment.php:321
+msgid ""
+"A prefix to add to all future order numbers done via this payment method. "
+"Prefix \"T\" makes order ID \"T-12345\""
+msgstr ""
+
+#: ../../includes/Payment.php:328
+msgid "Show description logo"
+msgstr "Näita kirjelduses logo"
+
+#: ../../includes/Payment.php:330
+msgid "Show ESTO logo in payment method description"
+msgstr "Näita ESTO logo maksemeetodi kirjelduses"
+
+#: ../../includes/Payment.php:342
+#, php-format
+msgid "Description logo in %s"
+msgstr "Kirjelduse logo %s keeles"
+
+#: ../../includes/Payment.php:345 ../../includes/Payment.php:385
+#: ../../includes/Payment.php:394
+msgid "Click on logo to replace it or enter url above."
+msgstr "Logo vahetamiseks vajuta sellele või sisesta ülal URL."
+
+#: ../../includes/Payment.php:382
+#, php-format
+msgid "Main logo in %s"
+msgstr "Põhilogo %s keeles"
+
+#: ../../includes/Payment.php:391
+msgid "Description logo"
+msgstr "Kirjelduse logo"
+
+#: ../../includes/Payment.php:469
+msgid "Choose logo"
+msgstr "Vali logo"
+
+#: ../../includes/Payment.php:471
+msgid "Set Logo"
+msgstr "Määra logo"
+
+#: ../../includes/Payment.php:562
+msgid "Shop ID is required!"
+msgstr "Poe ID vajalik!"
+
+#: ../../includes/Payment.php:567
+msgid "Secret key is required!"
+msgstr "Salajane API võti vajalik!"
+
+#: ../../includes/Payment.php:573
+msgid "Min amount is required!"
+msgstr "Minimaalne summa on vajalik!"
+
+#: ../../includes/Payment.php:578
+msgid "Max amount is required!"
+msgstr "Maksimaalne summa on vajalik!"
+
+#: ../../includes/Payment.php:657
+msgid "Thank you for the order, please click on the button to proceed."
+msgstr "Aitäh tellimuse eest, palun vajutage nupu, et liikuda edasi."
+
+#: ../../includes/Payment.php:678
+msgid "Thank you for the order. You will be redirected to ESTO..."
+msgstr "Aitäh tellimuse eest. Teid suunatakse edasi ESTO lehele..."
+
+#: ../../includes/class-wc-esto-card-payment.php:7
+#: ../../includes/class-wc-esto-card-payment.php:13
+msgid "Card payment (ESTO Pay)"
+msgstr "Kaardimakse (ESTO Pay)"
+
+#: ../../includes/class-wc-esto-card-payment.php:8
+#: ../../includes/class-wc-esto-card-payment.php:29
+msgid ""
+"ESTO Pay card payments are Visa and Mastercard credit/debit card payments. "
+"Contact ESTO Partner Support for additional information and activation."
+msgstr ""
+"ESTO Pay kaardimaksed on Visa ja Mastercard krediit-/deebetkaardi maksed. "
+"Lisainformatsiooni saamiseks ja aktiveerimiseks võta ühendust ESTO "
+"partnertoega."
+
+#: ../../includes/class-wc-esto-card-payment.php:36
+msgid "Pay by card (Visa/Mastercard)"
+msgstr "Maksa kaardiga (Visa/Mastercard)"
+
+#: ../../includes/class-wc-esto-card-payment.php:42
+msgid "Payment is made using a secure payment solution."
+msgstr "Makse sooritamisel kasutatakse turvalist maksesüsteemi."
+
+#: ../../includes/class-wc-esto-card-payment.php:47
+msgid "Show Visa/Mastercard logo in checkout"
+msgstr "Näita Visa/Mastercard logo kassas"
+
+#: ../../includes/class-wc-esto-pay-later-payment.php:7
+#: ../../includes/class-wc-pay-later-payment.php:7
+msgid "Pay Later"
+msgstr "Maksa hiljem"
+
+#: ../../includes/class-wc-esto-pay-later-payment.php:12
+#: ../../includes/class-wc-pay-later-payment.php:13
+msgid "ESTO Pay Later payment gateway"
+msgstr "ESTO \"maksa hiljem\" maksemoodul"
+
+#: ../../includes/class-wc-esto-pay-later-payment.php:25
+#: ../../includes/class-wc-pay-later-payment.php:26
+msgid ""
+"Pay Later is a campaign of ESTO. Contact ESTO support for additional "
+"information."
+msgstr ""
+
+#: ../../includes/class-wc-esto-pay-later-payment.php:32
+msgid "Buy now, pay later!"
+msgstr "Maksa hiljem"
+
+#: ../../includes/class-wc-esto-pay-later-payment.php:38
+msgid ""
+"Pay Later gives you an extra 30 days to pay for your order. Get the service "
+"or goods instantly and pay whenever you like within the next 30 days, with "
+"no additional fees!"
+msgstr ""
+"Kinnita tellimus kohe ja ESTO annab sulle 30 päeva lisaaega maksmiseks. "
+"Omanda kaup või teenus koheselt ning maksa vastavalt enda soovile järgneva "
+"30 päeva jooksul ilma ühegi lisanduva kuluta! Puudub intress. Puuduvad "
+"lisakulud."
+
+#: ../../includes/class-wc-esto-pay-payment.php:7
+msgid "ESTO Pay"
+msgstr "ESTO Pay"
+
+#: ../../includes/class-wc-esto-pay-payment.php:8
+msgid ""
+"ESTO Pay bank payments are a direct payment method for all Baltic and "
+"Finnish banklinks. Contact ESTO Partner Support for additional information "
+"and activation."
+msgstr ""
+"ESTO Pay pangamaksed on maksemeetod, millega saab maksta kõikide Baltikumi "
+"ja Soome pankadega. Lisainformatsiooni saamiseks ja aktiveerimiseks võta "
+"ühendust ESTO partnertoega."
+
+#: ../../includes/class-wc-esto-pay-payment.php:13
+msgid "ESTO Pay payment gateway"
+msgstr "ESTO Makse maksemoodul"
+
+#: ../../includes/class-wc-esto-pay-payment.php:34
+msgid ""
+"ESTO Pay is a direct payment method for credit cards, banklinks, etc. "
+"Contact ESTO support for additional information."
+msgstr ""
+"Tasu SEB, Swedbanki, LHV, Coopi, Luminori või Citadele pangamaksega või "
+"Revolutiga. Võimalik tasuda ka Läti, Leedu või Soome pangamaksega. "
+"Turvalised ja mugavad makseviisid toob teieni ESTO Pay."
+
+#: ../../includes/class-wc-esto-pay-payment.php:41
+msgid "Pay in the bank"
+msgstr "Maksa pangas"
+
+#: ../../includes/class-wc-esto-pay-payment.php:47
+msgid ""
+"Payment is made using a secure payment solution called KEVIN (UAB “KEVIN "
+"EU”), which is licensed by the Bank of Lithuania."
+msgstr ""
+"Makse sooritamisel kasutatakse turvalist maksesüsteemi nimega KEVIN (UAB "
+"“KEVIN EU“), kellel on Leedu Keskpanga tegevusluba."
+
+#: ../../includes/class-wc-esto-pay-payment.php:57
+msgid "Show bank logos"
+msgstr "Näita pankade logosid"
+
+#: ../../includes/class-wc-esto-pay-payment.php:59
+msgid "This option enables showing country dropdown and bank logos"
+msgstr "See säte lubab näidata riikide valikut ja pankade logosid"
+
+#: ../../includes/class-wc-esto-pay-payment.php:63
+msgid "Bank logos layout"
+msgstr "Pangalogode paigutus"
+
+#: ../../includes/class-wc-esto-pay-payment.php:66
+msgid "1 column"
+msgstr "1 tulp"
+
+#: ../../includes/class-wc-esto-pay-payment.php:67
+msgid "Row"
+msgstr "Rida"
+
+#: ../../includes/class-wc-esto-pay-payment.php:68
+msgid "2 columns"
+msgstr "2 tulpa"
+
+#: ../../includes/class-wc-esto-pay-payment.php:69
+msgid "3 columns"
+msgstr "3 tulpa"
+
+#: ../../includes/class-wc-esto-pay-payment.php:70
+msgid "4 columns"
+msgstr "4 tulpa"
+
+#: ../../includes/class-wc-esto-pay-payment.php:75
+msgid "Disable preselected bank redirect"
+msgstr ""
+
+#: ../../includes/class-wc-esto-pay-payment.php:77
+msgid "Disables redirection to the bank selected in checkout on Esto webpage"
+msgstr ""
+
+#: ../../includes/class-wc-esto-pay-payment.php:91
+msgid "Countries"
+msgstr ""
+
+#: ../../includes/class-wc-esto-pay-payment.php:96
+msgid "Specify countries for ESTO Pay method."
+msgstr "ESTO Pay maksemeetodi jaoks keelatud riigid"
+
+#: ../../includes/class-wc-esto-pay-payment.php:251
+msgid "Please select a bank"
+msgstr "Palun valige sobiv pank"
+
+#: ../../includes/class-wc-esto-x-payment.php:9
+msgid "Esto X"
+msgstr "Esto X"
+
+#: ../../includes/class-wc-esto-x-payment.php:10
+msgid ""
+"ESTO X is an alternative ESTO payment method. For more information and "
+"activation please contact ESTO Partner Support."
+msgstr ""
+"ESTO X on ESTO alternatiivne maksemeetod. Lisainformatsiooni saamiseks võta "
+"ühendust ESTO partnertoega."
+
+#: ../../includes/class-wc-esto-x-payment.php:16
+msgid "ESTO X payment gateway"
+msgstr "ESTO X maksemoodul"
+
+#: ../../includes/class-wc-esto-x-payment.php:31
+msgid ""
+"ESTO X is a campaign of ESTO. Contact ESTO support for additional "
+"information."
+msgstr ""
+
+#: ../../includes/class-wc-esto-x-payment.php:38
+msgid "Pay in 3 equal parts. At no extra charge."
+msgstr "Tasu 3 võrdse osana. Ilma ühegi lisatasuta."
+
+#: ../../includes/class-wc-esto-x-payment.php:44
+msgid "ESTO 3 - pay without additional cost within 3 months! Just pay later."
+msgstr ""
+"ESTO 3 - maksa ilma lisatasudeta kolme kuu jooksul! Lihtsalt maksa hiljem."
+
+#: ../../includes/class-wc-esto-x-payment.php:47
+msgid "Show calculator"
+msgstr "Näita kalkulaatorit"
+
+#: ../../includes/class-wc-esto-x-payment.php:49
+msgid "Show calculator in payment method's description area in checkout."
+msgstr "Näita kassas selle maksemeetodi kirjelduses kalkulaatorit"
+
+#: ../../includes/class-wc-esto-x-payment.php:103
+#, php-format
+msgid "%d interest-free payments over %d months"
+msgstr "%d intressivaba makset %d kuu jooksul"
+
+#: ../../includes/class-wc-pay-later-payment.php:8
+msgid ""
+"Pay Later is an alternative ESTO payment method. For more information and "
+"activation please contact ESTO Partner Support."
+msgstr ""
+"Maksa Hiljem on ESTO alternatiivne maksemeetod. Lisainformatsiooni saamiseks "
+"võta ühendust ESTO partnertoega."
+
+#: ../../includes/class-wc-pay-later-payment.php:33
+msgid "Buy now and pay later!"
+msgstr "Osta nüüd ja maksa hiljem!"
+
+#: ../../includes/class-wc-pay-later-payment.php:39
+msgid ""
+"Just confirm your order with 3 clicks and take your time! Pay later, within "
+"30 days, without any extra fees!"
+msgstr ""
+"Kinnita oma tellimus 3 klikiga ja võta endale aega! Maksa hiljem, 30 päeva "
+"jooksul, ilma ühegi lisatasuta!"
+
+#: ../../woo-includes/class-woothemes-plugin-updater.php:147
+msgid "WooThemes Updates"
+msgstr ""
+
+#: ../../woo-includes/class-woothemes-plugin-updater.php:167
+msgid "WooThemes Plugin Updater"
+msgstr ""
+
+#: ../../woo-includes/class-woothemes-plugin-updater.php:174
+msgid "WooThemes Username"
+msgstr ""
+
+#: ../../woo-includes/class-woothemes-plugin-updater.php:178
+msgid "WooThemes Password"
+msgstr ""
+
+#: ../../woo-includes/class-woothemes-plugin-updater.php:187
+msgid "Login"
+msgstr ""
+
+#: ../../woo-includes/class-woothemes-plugin-updater.php:238
+msgid "Switch WooThemes Account"
+msgstr ""
+
+#: ../../woo-includes/class-woothemes-plugin-updater.php:240
+#, php-format
+msgid ""
+"You are currently logged in as %1$s. To switch to a different WooThemes "
+"account, please fill in the login details below."
+msgstr ""
+
+#: ../../woo-includes/class-woothemes-plugin-updater.php:243
+msgid "Update your Plugins"
+msgstr ""
+
+#: ../../woo-includes/class-woothemes-plugin-updater.php:250
+msgid "Login Error"
+msgstr ""
+
+#: ../../woo-includes/class-woothemes-plugin-updater.php:252
+msgid "The login details supplied are invalid. Please try again."
+msgstr ""
+
+#: ../../woo-includes/class-woothemes-plugin-updater.php:262
+msgid "Enable WooThemes Plugin Updates."
+msgstr ""
+
+#: ../../woo-includes/class-woothemes-plugin-updater.php:264
+#, php-format
+msgid "Please <a href=\"%1$s\">login</a> to enable automatic plugin updates."
+msgstr ""
+
+#: ../../woo-includes/class-woothemes-plugin-updater.php:277
+msgid "Hide This Message"
+msgstr ""
+
+#~ msgid "Show Esto 3 monthly payment without contract fees"
+#~ msgstr "Näita Esto 3 kuumakset ilma lepingutasudeta"
+
+#~ msgid "Today"
+#~ msgstr "Täna"
+
+#~ msgid ""
+#~ "Pick a loan period that fits your budget and complete the purchase with "
+#~ "digital signing (Mobile-ID, Smart-ID or ID-card signature). Simple as "
+#~ "that!"
+#~ msgstr ""
+#~ "Maksa mugavalt ja kiiresti osamaksete kaupa! ESTO järelmaksuga kaupade "
+#~ "ostmine on sama turvaline ja mugav nagu pangalingiga maksmine. Kinnita "
+#~ "tellimus ja personaalsete tingimuste nägemiseks ning ostu edukaks "
+#~ "sooritamiseks logi sisse Mobiil-ID, Smart-ID või ID-kaardi abil."
+
+#~ msgid ""
+#~ "Make a payment from a bank account in SEB, Swedbank, LHV, Coop, Luminor "
+#~ "or Citadele bank, or a Revolut payment. Payments from Latvian, Lithuanian "
+#~ "or Finnish banks available as well. These secure and convenient payment "
+#~ "methods are brought to you by ESTO Pay."
+#~ msgstr ""
+#~ "Tasu SEB, Swedbanki, LHV, Coopi, Luminori või Citadele pangamaksega või "
+#~ "Revolutiga. Võimalik tasuda ka Läti, Leedu või Soome pangamaksega. "
+#~ "Turvalised ja mugavad makseviisid toob teieni ESTO Pay."
+
+#~ msgid ""
+#~ "ESTO 3 payment method allows you to make the payment in three equal "
+#~ "instalments over a period of three months. The sum of each monthly "
+#~ "instalment is calculated by dividing the value of the shopping cart into "
+#~ "three equal parts. No interests. Early payment option always available. "
+#~ "The payment method is provided and managed by ESTO AS."
+#~ msgstr ""
+#~ "ESTO 3 makseviis võimaldab tasuda kolme kuu jooksul kolme võrdse maksena. "
+#~ "Igakuine kuumakse kujuneb ostukorvi maksumuse jagamisel kolmeks võrdseks "
+#~ "osaks. Puudub intress. Alati on võimalus tasuda ka ennetähtaegselt. "
+#~ "Makseviisi pakub ja haldab ESTO AS."
+
+#~ msgid "Safe and convenient payments via bank link!"
+#~ msgstr "Turvalised ja mugavad maksed pangalingi kaudu!"
+
+#~ msgid "ESTO 3 payment method - pay in 3 equal parts!"
+#~ msgstr "ESTO 3 makseviis - maksa 3 võrdse osana, 3 kuu jooksul, 0% intress!"
+
+#~ msgid "Finland"
+#~ msgstr "Soome"
+
+#~ msgid "Ignore disabled countries"
+#~ msgstr "Ignoreeri keelatud riike"
+
+#~ msgid ""
+#~ "Countries where to show this method even when other ESTO methods are "
+#~ "disabled for that country."
+#~ msgstr ""
+#~ "Rigiid, kus näidata seda maksemeetodit isegi kui muud ESTO meetodid on "
+#~ "selles riigis keelatud."
+
+#~ msgid "ESTO 3"
+#~ msgstr "ESTO 3 makseviis - maksa 3 võrdse osana, 3 kuu jooksul, 0% intress!"
+
+#~ msgid ""
+#~ "Payment solution – pay for your shopping cart in three equal instalments "
+#~ "with no additional fees!"
+#~ msgstr ""
+#~ "ESTO 3 makseviis võimaldab tasuda kolme kuu jooksul kolme võrdse maksena. "
+#~ "Igakuine kuumakse kujuneb ostukorvi maksumuse jagamisel kolmeks võrdseks "
+#~ "osaks. Puudub intress. Alati on võimalus tasuda ka ennetähtaegselt. "
+#~ "Makseviisi pakub ja haldab ESTO AS."
+
+#~ msgid "ESTO X"
+#~ msgstr "ESTO X"
+
+#~ msgid "Kuumakse al."
+#~ msgstr "Kuumakse al."
+
+#~ msgid "Maksa Hiljem"
+#~ msgstr "Maksa Hiljem"
+
+#~ msgid "User completed payment"
+#~ msgstr "Kasutaja lõpetas makse"
