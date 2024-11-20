@@ -3,7 +3,7 @@
   Plugin Name: Woocommerce ESTO
   Plugin URI:  https://www.esto.ee
   Description: Adds ESTO redirect link to a Woocommerce instance
-  Version:     2.25.5
+  Version:     2.25.6
   Author:      Mikk Mihkel Nurges, Rebing OÜ
   Author URI:  www.rebing.ee
   License:     GPL2

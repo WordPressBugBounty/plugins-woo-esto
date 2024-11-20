@@ -1,9 +1,9 @@
 === Woocommerce ESTO ===
 Contributors: rebing
-Stable tag: 2.25.5
+Stable tag: 2.25.6
 Requires at least: 4.2
 Tested up to: 6.6.2
-Requires PHP: 8.2
+Requires PHP: 7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,9 @@ PRODUCT CALCULATOR
 5. Uncomment the required line in '<plugin_url>/includes/Calculator.php'@display_calculator
 
 == Changelog ==
+
+= 2.25.6 =
+* Compatibility --- Allow plugin updates for PHP versions starting from 7.3
 
 = 2.25.5 =
 * Update --- Esto Pay disclaimers
