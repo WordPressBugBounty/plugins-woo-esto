@@ -1,125 +1,161 @@
 <?php
-class WC_Esto_Pay_Payment extends WC_Esto_Payment {
 
-    function __construct() {
+/**
+ * ESTO Pay Payment Gateway class.
+ *
+ * This class handles ESTO Pay integration for WooCommerce.
+ *
+ * @package Woo_Esto_Pay
+ */
 
-        $this->id            = 'esto_pay';
-        $this->method_title  = __( 'ESTO Pay', 'woo-esto' );
-        $this->method_description  = __( 'ESTO Pay bank payments are a direct payment method for all Baltic and Finnish banklinks. Contact ESTO Partner Support for additional information and activation.', 'woo-esto' );
+class WC_Esto_Pay_Payment extends WC_Esto_Payment
+{
+    /**
+     * Class properties.
+     * These need to match the visibility in the parent class WC_Esto_Payment.
+     */
+    public $schedule_type;
+    public $id;
+    public $method_title;
+    public $method_description;
+    public $admin_page_title;
+    public $min_amount;
+    public $max_amount;
+
+    /**
+     * Constructor for the payment gateway.
+     */
+    function __construct()
+    {
+        $this->id = 'esto_pay';
+        $this->method_title = __('ESTO Pay', 'woo-esto');
+        $this->method_description = __('Payment is made using a secure payment solution called KEVIN (UAB “KEVIN EU”), which is licensed by the Bank of Lithuania.', 'woo-esto');
         $this->schedule_type = 'ESTO_PAY';
 
         parent::__construct();
 
-        $this->admin_page_title = __( 'ESTO Pay payment gateway', 'woo-esto' );
-        $this->min_amount       = 0.1;
-        $this->max_amount       = 999999;
+        $this->admin_page_title = __('ESTO Pay payment gateway', 'woo-esto');
+        $this->min_amount = 0.1;
+        $this->max_amount = 999999;
 
-        // needed to display logos even without description
-        $this->has_fields = $this->get_option( 'show_bank_logos' ) != 'no';
+        // Display logos even without description
+        $this->has_fields = $this->get_option('show_bank_logos') !== 'no';
 
-        // to allow showing ESTO Pay even when we don't want other ESTO methods in that country
-        // $this->ignore_disabled_countries = $this->get_option( 'ignore_disabled_countries' );
-
-        add_action( 'wp_enqueue_scripts', [$this, 'enqueue'] );
+        add_action('wp_enqueue_scripts', [$this, 'enqueue']);
     }
 
-    function init_form_fields() {
-
+    /**
+     * Initialize the form fields for the payment gateway.
+     */
+    function init_form_fields()
+    {
         parent::init_form_fields();
 
         $this->form_fields = [
-                'enabled'     => [
-                    'title'   => __('Enable/Disable', 'woo-esto'),
-                    'type'    => 'checkbox',
-                    'label'   => __('ESTO Pay is a direct payment method for credit cards, banklinks, etc. Contact ESTO support for additional information.', 'woo-esto'),
-                    'default' => 'no',
+            'enabled' => [
+                'title' => __('Enable/Disable', 'woo-esto'),
+                'type' => 'checkbox',
+                'label' => __('ESTO Pay is a direct payment method for credit cards, banklinks, etc. Contact ESTO support for additional information.', 'woo-esto'),
+                'default' => 'no',
+            ],
+            'title' => [
+                'title' => __('Title', 'woo-esto'),
+                'type' => 'text',
+                'description' => __('This controls the title which the user sees during checkout.', 'woo-esto'),
+                'default' => __('Pay in the bank', 'woo-esto'),
+            ],
+            'description' => [
+                'title' => __('Description', 'woo-esto'),
+                'type' => 'textarea',
+                'description' => __('This controls the description which the user sees during checkout.', 'woo-esto'),
+                'default' => __('Payment is made using a secure payment solution called KEVIN (UAB “KEVIN EU”), which is licensed by the Bank of Lithuania.', 'woo-esto'),
+            ],
+            'show_logo' => [
+                'title' => __('Show Logo', 'woo-esto'),
+                'type' => 'checkbox',
+                'default' => 'no',
+            ],
+            'logo' => [
+                'title' => __('Logo', 'woo-esto'),
+                'type' => 'text',
+            ],
+            'show_bank_logos' => [
+                'title' => __('Show bank logos', 'woo-esto'),
+                'type' => 'checkbox',
+                'label' => __('This option enables showing country dropdown and bank logos', 'woo-esto'),
+                'default' => 'yes',
+            ],
+            'bank_logos_layout' => [
+                'title' => __('Bank logos layout', 'woo-esto'),
+                'type' => 'select',
+                'options' => [
+                    'columns-1' => __('1 column', 'woo-esto'),
+                    'row' => __('Row', 'woo-esto'),
+                    'columns-2' => __('2 columns', 'woo-esto'),
+                    'columns-3' => __('3 columns', 'woo-esto'),
+                    'columns-4' => __('4 columns', 'woo-esto'),
                 ],
-                'title'       => [
-                    'title'       => __('Title', 'woo-esto'),
-                    'type'        => 'text',
-                    'description' => __('This controls the title which the user sees during checkout.', 'woo-esto'),
-                    'default'     => __('Pay in the bank', 'woo-esto'),
-                ],
-                'description' => [
-                    'title'       => __('Description', 'woo-esto'),
-                    'type'        => 'textarea',
-                    'description' => __('This controls the description which the user sees during checkout.', 'woo-esto'),
-                    'default'     => __('Payment is made using a secure payment solution called KEVIN (UAB “KEVIN EU”), which is licensed by the Bank of Lithuania.',
-                        'woo-esto'),
-                ],
-            ]
-            + [
-                'show_logo' => $this->form_fields['show_logo'],
-                'logo'      => $this->form_fields['logo'],
-            ]
-            + [
-                'show_bank_logos'                 => [
-                    'title'   => __('Show bank logos', 'woo-esto'),
-                    'type'    => 'checkbox',
-                    'label'   => __('This option enables showing country dropdown and bank logos', 'woo-esto'),
-                    'default' => 'yes',
-                ],
-                'bank_logos_layout'               => [
-                    'title'   => __('Bank logos layout', 'woo-esto'),
-                    'type'    => 'select',
-                    'options' => [
-                        'columns-1' => __('1 column', 'woo-esto'),
-                        'row'       => __('Row', 'woo-esto'),
-                        'columns-2' => __('2 columns', 'woo-esto'),
-                        'columns-3' => __('3 columns', 'woo-esto'),
-                        'columns-4' => __('4 columns', 'woo-esto'),
-                    ],
-                    'default' => 'columns-2'
-                ],
-                'disable_bank_preselect_redirect' => [
-                    'title'   => __('Disable preselected bank redirect', 'woo-esto'),
-                    'type'    => 'checkbox',
-                    'label'   => __('Disables redirection to the bank selected in checkout on Esto webpage', 'woo-esto'),
-                    'default' => 'no',
-                ],
-                // 'ignore_disabled_countries' => [
-                //     'title'       => __( 'Ignore disabled countries', 'woo-esto' ),
-                //     'type'        => 'multiselect',
-                //     'class'       => 'wc-enhanced-select',
-                //     'options'     => WC()->countries->get_countries(),
-                //     'default'     => [],
-                //     'description' => __( 'Countries where to show this method even when other ESTO methods are disabled for that country.', 'woo-esto' ),
-                //     'desc_tip'    => true
-                // ],
-            ] + [
-                'countries'  => [
-                    'title'       => __('Countries', 'woo-esto'),
-                    'type'        => 'multiselect',
-                    'class'       => 'wc-enhanced-select',
-                    'options'     => WC()->countries ? WC()->countries->get_countries() : esto_get_countries(),
-                    'default'     => [],
-                    'description' => __('Specify countries for ESTO Pay method.', 'woo-esto'),
-                    'desc_tip'    => true
-                ]
-            ] + [
-                'set_on_hold_status' => $this->form_fields['set_on_hold_status'],
-                'order_prefix'       => $this->form_fields['order_prefix'],
-            ];
-
-        $this->form_fields['show_logo']['default'] = 'no';
+                'default' => 'columns-2',
+            ],
+            'disable_bank_preselect_redirect' => [
+                'title' => __('Disable preselected bank redirect', 'woo-esto'),
+                'type' => 'checkbox',
+                'label' => __('Disables redirection to the bank selected in checkout on Esto webpage', 'woo-esto'),
+                'default' => 'no',
+            ],
+            'countries' => [
+                'title' => __('Countries', 'woo-esto'),
+                'type' => 'multiselect',
+                'class' => 'wc-enhanced-select',
+                'options' => WC()->countries ? WC()->countries->get_countries() : esto_get_countries(),
+                'default' => [],
+                'description' => __('Specify countries for ESTO Pay method.', 'woo-esto'),
+                'desc_tip' => true,
+            ],
+            'set_on_hold_status' => $this->form_fields['set_on_hold_status'] ?? [],
+            'order_prefix' => $this->form_fields['order_prefix'] ?? [],
+        ];
     }
 
-    public function enqueue() {
-        if ( is_checkout() ) {
-            wp_enqueue_style( 'woo-esto-checkout-css', plugins_url( 'assets/css/checkout.css', dirname( __FILE__ ) ), false, filemtime( dirname( __FILE__, 2 ) . '/assets/css/checkout.css' ) );
-            wp_enqueue_script( 'woo-esto-checkout-js', plugins_url( 'assets/js/checkout.js', dirname( __FILE__ ) ), ['jquery'], filemtime( dirname( __FILE__, 2 ) . '/assets/js/checkout.js' ), true );
+    /**
+     * Enqueue scripts and styles for the payment gateway.
+     */
+    public function enqueue()
+    {
+        if (is_checkout()) {
+            wp_enqueue_style(
+                'woo-esto-checkout-css',
+                plugins_url('assets/css/checkout.css', dirname(__FILE__)),
+                [],
+                filemtime(dirname(__FILE__, 2) . '/assets/css/checkout.css')
+            );
+
+            wp_enqueue_script(
+                'woo-esto-checkout-js',
+                plugins_url('assets/js/checkout.js', dirname(__FILE__)),
+                ['jquery'],
+                filemtime(dirname(__FILE__, 2) . '/assets/js/checkout.js'),
+                true
+            );
         }
     }
 
-    public function payment_fields() {
-        $description = $this->get_description();
-        if ( $description ) {
-            echo wpautop( wptexturize( $description ) ); // @codingStandardsIgnoreLine.
+    /**
+     * Display the payment fields for the gateway.
+     */
+    public function payment_fields()
+    {
+        $description = __('Payment is made using a secure payment solution called KEVIN (UAB “KEVIN EU”), which is licensed by the Bank of Lithuania.', 'woo-esto');
+        if ($description) {
+            echo wpautop(wptexturize($description));
         }
 
         $this->print_bank_logos_html();
     }
 
+    /**
+     * Display the bank logos dropdown and layout.
+     */
     public function print_bank_logos_html() {
         if ( $this->get_option( 'show_bank_logos' ) == 'no' ) {
             return;
@@ -131,7 +167,7 @@ class WC_Esto_Pay_Payment extends WC_Esto_Payment {
         if ($payment_settings && !empty($payment_settings['connection_mode']) && $payment_settings['connection_mode'] == 'test') $test_mode = true;
 
         /** @var array $country_keys */
-        $country_keys = $this->get_option( 'countries', ['EE', 'LV', 'LT', 'FI']);
+        $country_keys = $this->get_option( 'countries', ['EE', 'LV', 'LT']);
 
         $wc_countries = WC()->countries->get_countries();
         $countries = [];
@@ -164,7 +200,6 @@ class WC_Esto_Pay_Payment extends WC_Esto_Payment {
                 curl_setopt( $curl, CURLOPT_USERPWD, $this->shop_id . ":" . $this->secret_key );
                 curl_setopt( $curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC );
 
-                //for debug only!
                 curl_setopt( $curl, CURLOPT_SSL_VERIFYHOST, false );
                 curl_setopt( $curl, CURLOPT_SSL_VERIFYPEER, false );
 
@@ -246,12 +281,76 @@ class WC_Esto_Pay_Payment extends WC_Esto_Payment {
         <?php
     }
 
-    public function validate_fields() {
-        if ( $this->get_option( 'disable_bank_preselect_redirect' ) != 'yes' && empty( $_REQUEST['esto_pay_bank_selection'] ) && empty( $_POST['esto_pay_bank_selection'] ) ) {
-            wc_add_notice( __( 'Please select a bank', 'woo-esto' ), 'error' );
+    /**
+     * Validate the fields on the checkout page.
+     *
+     * @return bool
+     */
+    public function validate_fields()
+    {
+        if ($this->get_option('disable_bank_preselect_redirect') !== 'yes' && empty($_REQUEST['esto_pay_bank_selection']) && empty($_POST['esto_pay_bank_selection'])) {
+            wc_add_notice(__('Please select a bank', 'woo-esto'), 'error');
             return false;
         }
 
         return true;
+    }
+
+    /**
+     * Helper function to check if test mode is enabled.
+     *
+     * @return bool
+     */
+    private function is_test_mode_enabled()
+    {
+        $payment_settings = get_option('woocommerce_esto_settings', null);
+        return $payment_settings && !empty($payment_settings['connection_mode']) && $payment_settings['connection_mode'] === 'test';
+    }
+
+    /**
+     * Helper function to fetch bank logos from ESTO API.
+     *
+     * @param array $countries List of country keys.
+     * @param bool  $test_mode Test mode flag.
+     * @return array
+     */
+    private function fetch_bank_logos(array $countries, bool $test_mode)
+    {
+        $logos = WC()->session->get('esto_logos');
+        $country_keys = implode('-', array_keys($countries));
+        $check_logos_time = ((int) WC()->session->get('esto_logos_time_' . esto_get_country(), time()) + 600);
+
+        if ($check_logos_time < time() || empty($logos) || WC()->session->get('esto_country_keys') !== $country_keys) {
+            $logos = [];
+
+            foreach ($countries as $key => $val) {
+                $url = esto_get_api_url() . "v2/purchase/payment-methods?country_code=" . strtoupper($key) . ($test_mode ? "&test_mode=1" : "");
+                $response = wp_remote_get($url, [
+                    'headers' => [
+                        'Authorization' => 'Basic ' . base64_encode($this->shop_id . ':' . $this->secret_key),
+                    ],
+                ]);
+
+                if (is_wp_error($response)) {
+                    continue;
+                }
+
+                $data = json_decode(wp_remote_retrieve_body($response));
+
+                if (!empty($data)) {
+                    foreach ($data as $row) {
+                        if ($row->type === 'BANKLINK') {
+                            $logos[$key][] = $row;
+                        }
+                    }
+                }
+            }
+
+            WC()->session->set('esto_logos', $logos);
+            WC()->session->set('esto_country_keys', $country_keys);
+            WC()->session->set('esto_logos_time_' . esto_get_country(), time());
+        }
+
+        return $logos;
     }
 }

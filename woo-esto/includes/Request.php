@@ -7,23 +7,24 @@
  *
  * @author Mikk Mihkel Nurges
  */
-class EstoRequest {
+class EstoRequest
+{
 
     protected $_plugin_text_domain = 'wc_esto_payment';
 
     /** @var WC_Settings_API */
-    protected $wcSettings;
+    protected WC_Settings_API $settings; // Declare the settings property
 
     /** @var WC_Order */
-    protected $order;
+    protected WC_Order $order;
 
-    protected $mac;
-    protected $json;
+    protected ?string $mac = null; // Initialize with null
+    protected ?string $json = null; // Initialize with null
 
     public function __construct(WC_Settings_API $settings)
     {
         $this->settings = $settings;
-        add_action( 'woocommerce_checkout_order_processed', array( $this, 'checkout_save_selected_bank' ), 10, 3);
+        add_action('woocommerce_checkout_order_processed', array($this, 'checkout_save_selected_bank'), 10, 3);
     }
 
     public function setOrder(WC_Order $order)
@@ -41,29 +42,27 @@ class EstoRequest {
     {
         $title = $this->settings->get_option('title');
 
-        if(function_exists('curl_version'))
-        {
+        if (function_exists('curl_version')) {
             $data = $this->getPurchaseData();
             $redirectUrl = $this->getPurchaseRedirect($data);
 
             $get_params_html = '';
-            if ( $redirectUrl ) {
-                woo_esto_log( 'redirectUrl: ' . $redirectUrl );
+            if ($redirectUrl) {
+                woo_esto_log('redirectUrl: ' . $redirectUrl);
 
-                $query_string = parse_url( $redirectUrl, PHP_URL_QUERY );
+                $query_string = parse_url($redirectUrl, PHP_URL_QUERY);
 
-                if ( $query_string ) {
+                if ($query_string) {
                     $get_params = [];
-                    parse_str( $query_string, $get_params );
+                    parse_str($query_string, $get_params);
 
-                    if ( ! empty( $get_params ) ) {
-                        foreach ( $get_params as $key => $value ) {
-                            if ( is_array( $value ) ) {
-                                foreach ( $value as $value_child ) {
+                    if (! empty($get_params)) {
+                        foreach ($get_params as $key => $value) {
+                            if (is_array($value)) {
+                                foreach ($value as $value_child) {
                                     $get_params_html .= '<input type="hidden" name="' . $key . '[]" value="' . $value_child . '">';
                                 }
-                            }
-                            else {
+                            } else {
                                 $get_params_html .= '<input type="hidden" name="' . $key . '" value="' . $value . '">';
                             }
                         }
@@ -73,17 +72,15 @@ class EstoRequest {
                 // woo_esto_log( 'get_params_html: ' . $get_params_html );
             }
 
-            return '<form action="'.$redirectUrl.'" method="GET" id="esto_payment_form">'
-                    . $get_params_html
-                    . '<input type="submit" class="button-alt" id="esto_payment_submit" value="' . __($title, 'woo-esto' ) . '" />
+            return '<form action="' . $redirectUrl . '" method="GET" id="esto_payment_form">'
+                . $get_params_html
+                . '<input type="submit" class="button-alt" id="esto_payment_submit" value="' . __($title, 'woo-esto') . '" />
                     </form>';
-        }
-        else
-        {
+        } else {
             $destinationUrl = esto_get_api_url() . 'v1/' . 'purchase';
 
             return '<form action="' . htmlspecialchars($destinationUrl) . '" method="POST" id="esto_payment_form">
-                    <input type="submit" class="button-alt" id="esto_payment_submit" value="' . __($title, 'woo-esto' ) . '" />
+                    <input type="submit" class="button-alt" id="esto_payment_submit" value="' . __($title, 'woo-esto') . '" />
                     <input type="hidden" name="json" value="' . esc_attr($this->getJson()) . '" />
                     <input type="hidden" name="mac" value="' . esc_attr($this->getMAC()) . '" />
                     </form>';
@@ -92,46 +89,42 @@ class EstoRequest {
 
     public function getPurchaseRedirect($data)
     {
-        if ( is_callable( [ $this->order, 'get_meta' ] ) ) {
-            $existing_purchase_url_timeout = $this->order->get_meta( 'woo_esto_purchase_url_timeout', true );
-            if ( $existing_purchase_url_timeout && $existing_purchase_url_timeout > time() ) {
-                $existing_purchase_url = $this->order->get_meta( 'woo_esto_purchase_url', true );
-                $existing_purchase_url_amount = $this->order->get_meta( 'woo_esto_purchase_url_amount', true );
-                $existing_purchase_url_id = $this->order->get_meta( 'woo_esto_purchase_url_id', true );
-                if ( $existing_purchase_url && $existing_purchase_url_amount == $data['amount'] && $existing_purchase_url_id == $this->settings->id ) {
-                    if ( isset( $data['payment_method_key'] ) ) {
-                        $existing_payment_method_key = $this->order->get_meta( 'woo_esto_purchase_url_payment_method_key', true );
-                        if ( $existing_payment_method_key == $data['payment_method_key'] ) {
+        if (is_callable([$this->order, 'get_meta'])) {
+            $existing_purchase_url_timeout = $this->order->get_meta('woo_esto_purchase_url_timeout', true);
+            if ($existing_purchase_url_timeout && $existing_purchase_url_timeout > time()) {
+                $existing_purchase_url = $this->order->get_meta('woo_esto_purchase_url', true);
+                $existing_purchase_url_amount = $this->order->get_meta('woo_esto_purchase_url_amount', true);
+                $existing_purchase_url_id = $this->order->get_meta('woo_esto_purchase_url_id', true);
+                if ($existing_purchase_url && $existing_purchase_url_amount == $data['amount'] && $existing_purchase_url_id == $this->settings->id) {
+                    if (isset($data['payment_method_key'])) {
+                        $existing_payment_method_key = $this->order->get_meta('woo_esto_purchase_url_payment_method_key', true);
+                        if ($existing_payment_method_key == $data['payment_method_key']) {
                             return $existing_purchase_url;
                         }
-                    }
-                    else {
+                    } else {
                         return $existing_purchase_url;
                     }
                 }
             }
-        }
-        else {
-            if ( is_callable( array( $this->order, 'get_id' ) ) ) {
+        } else {
+            if (is_callable(array($this->order, 'get_id'))) {
                 $order_post_id = $this->order->get_id();
-            }
-            else {
+            } else {
                 $order_post_id = $this->order->id;
             }
 
-            $existing_purchase_url_timeout = get_post_meta( $order_post_id, 'woo_esto_purchase_url_timeout', true );
-            if ( $existing_purchase_url_timeout && $existing_purchase_url_timeout > time() ) {
-                $existing_purchase_url = get_post_meta( $order_post_id, 'woo_esto_purchase_url', true );
-                $existing_purchase_url_amount = get_post_meta( $order_post_id, 'woo_esto_purchase_url_amount', true );
-                $existing_purchase_url_id = get_post_meta( $order_post_id, 'woo_esto_purchase_url_id', true );
-                if ( $existing_purchase_url && $existing_purchase_url_amount == $data['amount'] && $existing_purchase_url_id == $this->settings->id ) {
-                    if ( isset( $data['payment_method_key'] ) ) {
-                        $existing_payment_method_key = get_post_meta( $order_post_id, 'woo_esto_purchase_url_payment_method_key', true );
-                        if ( $existing_payment_method_key == $data['payment_method_key'] ) {
+            $existing_purchase_url_timeout = get_post_meta($order_post_id, 'woo_esto_purchase_url_timeout', true);
+            if ($existing_purchase_url_timeout && $existing_purchase_url_timeout > time()) {
+                $existing_purchase_url = get_post_meta($order_post_id, 'woo_esto_purchase_url', true);
+                $existing_purchase_url_amount = get_post_meta($order_post_id, 'woo_esto_purchase_url_amount', true);
+                $existing_purchase_url_id = get_post_meta($order_post_id, 'woo_esto_purchase_url_id', true);
+                if ($existing_purchase_url && $existing_purchase_url_amount == $data['amount'] && $existing_purchase_url_id == $this->settings->id) {
+                    if (isset($data['payment_method_key'])) {
+                        $existing_payment_method_key = get_post_meta($order_post_id, 'woo_esto_purchase_url_payment_method_key', true);
+                        if ($existing_payment_method_key == $data['payment_method_key']) {
                             return $existing_purchase_url;
                         }
-                    }
-                    else {
+                    } else {
                         return $existing_purchase_url;
                     }
                 }
@@ -141,51 +134,50 @@ class EstoRequest {
         $service = 'purchase';
         $method = 'POST';
 
-        if ( isset( $data['payment_method_key'] ) && $this->settings->get_option( 'disable_bank_preselect_redirect' ) != 'yes' ) {
+        if (isset($data['payment_method_key']) && $this->settings->get_option('disable_bank_preselect_redirect') != 'yes') {
             $service .= '/redirect';
         }
 
         $response = $this->makeCall($service, $data, $method);
 
-        woo_esto_log( 'purchase request: ' . $service . ' ' . print_r( $data, true ) );
-        if ( ! isset( $response->purchase_url ) ) {
-            woo_esto_log( 'purchase request response: ' . print_r( $response, true ) );
+        woo_esto_log('purchase request: ' . $service . ' ' . print_r($data, true));
+        if (! isset($response->purchase_url)) {
+            woo_esto_log('purchase request response: ' . print_r($response, true));
             // woo_esto_log( $this->settings->shop_id . ' : ' . $this->settings->secret_key );
         }
 
-        if ( ! empty( $response->purchase_url ) ) {
-            if ( is_callable( [ $this->order, 'update_meta_data' ] ) ) {
-                $this->order->update_meta_data( 'woo_esto_purchase_url', $response->purchase_url );
-                $this->order->update_meta_data( 'woo_esto_purchase_url_amount', $data['amount'] );
-                $this->order->update_meta_data( 'woo_esto_purchase_url_id', $this->settings->id );
-                $this->order->update_meta_data( 'woo_esto_purchase_url_timeout', time() + 60 );
+        if (! empty($response->purchase_url)) {
+            if (is_callable([$this->order, 'update_meta_data'])) {
+                $this->order->update_meta_data('woo_esto_purchase_url', $response->purchase_url);
+                $this->order->update_meta_data('woo_esto_purchase_url_amount', $data['amount']);
+                $this->order->update_meta_data('woo_esto_purchase_url_id', $this->settings->id);
+                $this->order->update_meta_data('woo_esto_purchase_url_timeout', time() + 60);
 
-                if ( isset( $data['payment_method_key'] ) ) {
-                    $this->order->update_meta_data( 'woo_esto_purchase_url_payment_method_key', $data['payment_method_key'] );
+                if (isset($data['payment_method_key'])) {
+                    $this->order->update_meta_data('woo_esto_purchase_url_payment_method_key', $data['payment_method_key']);
                 }
 
                 $this->order->save();
-            }
-            else {
-                update_post_meta( $order_post_id, 'woo_esto_purchase_url', $response->purchase_url );
-                update_post_meta( $order_post_id, 'woo_esto_purchase_url_amount', $data['amount'] );
-                update_post_meta( $order_post_id, 'woo_esto_purchase_url_id', $this->settings->id );
-                update_post_meta( $order_post_id, 'woo_esto_purchase_url_timeout', time() + 60 );
+            } else {
+                update_post_meta($order_post_id, 'woo_esto_purchase_url', $response->purchase_url);
+                update_post_meta($order_post_id, 'woo_esto_purchase_url_amount', $data['amount']);
+                update_post_meta($order_post_id, 'woo_esto_purchase_url_id', $this->settings->id);
+                update_post_meta($order_post_id, 'woo_esto_purchase_url_timeout', time() + 60);
 
-                if ( isset( $data['payment_method_key'] ) ) {
-                    update_post_meta( $order_post_id, 'woo_esto_purchase_url_payment_method_key', $data['payment_method_key'] );
+                if (isset($data['payment_method_key'])) {
+                    update_post_meta($order_post_id, 'woo_esto_purchase_url_payment_method_key', $data['payment_method_key']);
                 }
             }
         }
 
-        return isset( $response->purchase_url ) ? $response->purchase_url : false;
+        return isset($response->purchase_url) ? $response->purchase_url : false;
     }
 
     private function makeCall($service, $data = [], $method = 'GET')
     {
         $url = esto_get_api_url() . 'v2/' . $service;
 
-        if($method == 'GET') {
+        if ($method == 'GET') {
             $url .= '?' . http_build_query($data);
         }
 
@@ -197,7 +189,7 @@ class EstoRequest {
         // Basic auth
         $user = $this->settings->shop_id;
         $password = $this->settings->secret_key;
-        
+
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_USERPWD, $user . ':' . $password);
 
@@ -231,7 +223,7 @@ class EstoRequest {
         $response = curl_exec($ch);
         $response = json_decode($response);
 
-        if(isset($response->data)) {
+        if (isset($response->data)) {
             return json_decode($response->data);
         } else {
             return $response;
@@ -240,8 +232,7 @@ class EstoRequest {
 
     public function getMAC()
     {
-        if( ! $this->mac)
-        {
+        if (! $this->mac) {
             $this->setJsonAndMAC();
         }
         return $this->mac;
@@ -249,8 +240,7 @@ class EstoRequest {
 
     public function getJson()
     {
-        if( ! $this->json)
-        {
+        if (! $this->json) {
             $this->setJsonAndMAC();
         }
         return $this->json;
@@ -270,26 +260,21 @@ class EstoRequest {
         $paymentMessage = $request['json'];
         $mac = $request['mac'];
 
-        if( ! $this->verifyMessage($paymentMessage, $mac))
-        {
+        if (! $this->verifyMessage($paymentMessage, $mac)) {
             return $result;
-        }
-        else
-        {
+        } else {
             $paymentMessage = json_decode($paymentMessage);
-            if($paymentMessage->shop_id != $this->settings->shop_id)
-            {
+            if ($paymentMessage->shop_id != $this->settings->shop_id) {
                 return $result;
             }
 
-            if($paymentMessage->status == WC_Esto_Payment::TRX_APPROVED)
-            {
+            if ($paymentMessage->status == WC_Esto_Payment::TRX_APPROVED) {
                 $result['status'] = WC_Esto_Payment::TRX_APPROVED;
-                $result['reference'] = sanitize_text_field( $paymentMessage->reference );
+                $result['reference'] = sanitize_text_field($paymentMessage->reference);
                 $result['amount']   = $paymentMessage->amount;
             }
 
-            if ( $paymentMessage->status == WC_Esto_Payment::TRX_REJECTED ) {
+            if ($paymentMessage->status == WC_Esto_Payment::TRX_REJECTED) {
                 $result['status'] = WC_Esto_Payment::TRX_REJECTED;
             }
 
@@ -302,60 +287,56 @@ class EstoRequest {
 
     public function getPurchaseData($fromOrder = false)
     {
-        if ( is_callable( array( $this->order, 'get_id' ) ) ) {
+        if (is_callable(array($this->order, 'get_id'))) {
             $order_id = $this->order->get_id();
-        }
-        else {
+        } else {
             $order_id = $this->order->id;
         }
 
         $order_post_id = $order_id;
 
-        if ( is_callable( array( $this->order, 'get_order_number' ) ) ) {
+        if (is_callable(array($this->order, 'get_order_number'))) {
             $order_number = $this->order->get_order_number();
 
-            if ( $order_number != $order_id ) {
-                if ( is_callable( [ $this->order, 'update_meta_data'] ) ) {
-                    $this->order->update_meta_data( 'esto_order_nr', $order_number );
+            if ($order_number != $order_id) {
+                if (is_callable([$this->order, 'update_meta_data'])) {
+                    $this->order->update_meta_data('esto_order_nr', $order_number);
                     $this->order->save();
-                }
-                else {
-                    update_post_meta( $order_id, 'esto_order_nr', $order_number );
+                } else {
+                    update_post_meta($order_id, 'esto_order_nr', $order_number);
                 }
                 $order_id = $order_number;
             }
         }
 
-        $order_prefix = $this->settings->get_option( 'order_prefix' );
-        if ( $order_prefix ) {
+        $order_prefix = $this->settings->get_option('order_prefix');
+        if ($order_prefix) {
             $order_id = $order_prefix . '-' . $order_id;
-            if ( is_callable( [ $this->order, 'update_meta_data'] ) ) {
-                $this->order->update_meta_data( 'esto_prefixed_order_id', $order_id );
+            if (is_callable([$this->order, 'update_meta_data'])) {
+                $this->order->update_meta_data('esto_prefixed_order_id', $order_id);
                 $this->order->save();
-            }
-            else {
-                update_post_meta( $order_post_id, 'esto_prefixed_order_id', $order_id );
+            } else {
+                update_post_meta($order_post_id, 'esto_prefixed_order_id', $order_id);
             }
         }
 
-        $api_request_url = WC()->api_request_url( strtolower( get_class( $this->settings ) ) );
+        $api_request_url = WC()->api_request_url(strtolower(get_class($this->settings)));
         // add country parameter, we need it for selecting the correct shop_id / secret_key when data returns
-        $api_request_url = add_query_arg( 'esto_api_country_code', esto_get_country(), $api_request_url );
+        $api_request_url = add_query_arg('esto_api_country_code', esto_get_country(), $api_request_url);
 
         // Polylang compatibility if they have default language use a directory in the permalink structure
         // the option "Hide URL language information for default language" is unchecked in Polylang settings
-        if ( function_exists( 'pll_current_language' ) ) {
+        if (function_exists('pll_current_language')) {
             $current_pll_lang = pll_current_language();
-            if ( $current_pll_lang ) {
-                if ( ! get_option( 'permalink_structure' ) ) {
-                    if ( ! stristr( $api_request_url, 'language=' ) ) {
-                        $api_request_url = add_query_arg( 'language', $current_pll_lang, $api_request_url );
+            if ($current_pll_lang) {
+                if (! get_option('permalink_structure')) {
+                    if (! stristr($api_request_url, 'language=')) {
+                        $api_request_url = add_query_arg('language', $current_pll_lang, $api_request_url);
                     }
-                }
-                else {
+                } else {
                     $lang_string = '/language/' . $current_pll_lang . '/wc-api/';
-                    if ( ! stristr( $api_request_url,  $lang_string ) ) {
-                        $api_request_url = str_replace( '/wc-api/', $lang_string, $api_request_url );
+                    if (! stristr($api_request_url,  $lang_string)) {
+                        $api_request_url = str_replace('/wc-api/', $lang_string, $api_request_url);
                     }
                 }
             }
@@ -370,30 +351,27 @@ class EstoRequest {
             'connection_mode'   => $this->settings->connection_mode,
         ];
 
-        if(method_exists($this->order, 'get_cancel_order_url_raw'))
-        {
+        if (method_exists($this->order, 'get_cancel_order_url_raw')) {
             $data['cancel_url'] = $this->order->get_cancel_order_url_raw();
         }
 
-        if ( is_callable( [ $this->order, 'get_meta'] ) ) {
-            $selected_bank = $this->order->get_meta( 'esto_preferred_bank', true );
-        }
-        else {
-            $selected_bank = get_post_meta( $order_post_id, 'esto_preferred_bank', true );
+        if (is_callable([$this->order, 'get_meta'])) {
+            $selected_bank = $this->order->get_meta('esto_preferred_bank', true);
+        } else {
+            $selected_bank = get_post_meta($order_post_id, 'esto_preferred_bank', true);
         }
 
-        if ( $selected_bank && $this->settings->get_option( 'disable_bank_preselect_redirect' ) != 'yes' ) {
+        if ($selected_bank && $this->settings->get_option('disable_bank_preselect_redirect') != 'yes') {
             $data['payment_method_key'] = $selected_bank;
         }
 
         // card
-        if ( ! empty( $this->settings->payment_method_key ) ) {
+        if (! empty($this->settings->payment_method_key)) {
             $data['payment_method_key'] = $this->settings->payment_method_key;
         }
 
         // Get customer info
-        if($this->_isWoo30())
-        {
+        if ($this->_isWoo30()) {
             $data['customer'] = [
                 'first_name'    => $this->order->get_billing_first_name(),
                 'last_name'     => $this->order->get_billing_last_name(),
@@ -403,9 +381,7 @@ class EstoRequest {
                 'city'          => $this->order->get_billing_city(),
                 'post_code'     => $this->order->get_billing_postcode(),
             ];
-        }
-        else
-        {
+        } else {
             $data['customer'] = [
                 'first_name'    => $this->order->billing_first_name,
                 'last_name'     => $this->order->billing_last_name,
@@ -417,10 +393,8 @@ class EstoRequest {
             ];
         }
 
-        foreach($data['customer'] as $key => $val)
-        {
-            if(is_null($val) || $val === '')
-            {
+        foreach ($data['customer'] as $key => $val) {
+            if (is_null($val) || $val === '') {
                 unset($data['customer'][$key]);
             }
         }
@@ -428,17 +402,16 @@ class EstoRequest {
         // Get basket items
         $items = [];
 
-        if(!$fromOrder){
-            foreach(WC()->cart->get_cart() as $cartItem)
-            {
+        if (!$fromOrder) {
+            foreach (WC()->cart->get_cart() as $cartItem) {
                 $items[] = [
                     'name'          => strlen($cartItem['data']->get_title()) > 0 ? $cartItem['data']->get_title() : "No title",
-                    'unit_price'    => ! empty( $cartItem['line_total'] ) ? ( $cartItem['line_total'] / $cartItem['quantity'] ) : $cartItem['data']->get_price(),
+                    'unit_price'    => ! empty($cartItem['line_total']) ? ($cartItem['line_total'] / $cartItem['quantity']) : $cartItem['data']->get_price(),
                     'quantity'      => $cartItem['quantity'],
                 ];
             }
         } else {
-            foreach ($this->order->get_items() as $orderItem){
+            foreach ($this->order->get_items() as $orderItem) {
                 $product = $orderItem->get_product();
                 $items[] = [
                     'name'          => strlen($product->get_name()) > 0 ? $product->get_name() : "No title",
@@ -448,12 +421,11 @@ class EstoRequest {
             }
         }
 
-        if(count($items))
-        {
+        if (count($items)) {
             $data['items'] = $items;
         }
 
-        if ( ! empty( $this->settings->schedule_type ) ) {
+        if (! empty($this->settings->schedule_type)) {
             $data['schedule_type'] = $this->settings->schedule_type;
         }
 
@@ -481,8 +453,7 @@ class EstoRequest {
 
     protected function verifyMessage($json, $mac)
     {
-        if(is_array($json))
-        {
+        if (is_array($json)) {
             $json = trim(json_encode($json));
         }
 
@@ -491,14 +462,14 @@ class EstoRequest {
         return $mac === strtoupper(hash('sha512', $json));
     }
 
-    function checkout_save_selected_bank( $order_id, $posted_data, $order ) {
-        if ( isset( $_REQUEST['esto_pay_bank_selection'] ) ) {
-            if ( is_callable( [ $order, 'update_meta_data'] ) ) {
-                $order->update_meta_data( 'esto_preferred_bank', sanitize_text_field( $_REQUEST['esto_pay_bank_selection'] ) );
+    function checkout_save_selected_bank($order_id, $posted_data, $order)
+    {
+        if (isset($_REQUEST['esto_pay_bank_selection'])) {
+            if (is_callable([$order, 'update_meta_data'])) {
+                $order->update_meta_data('esto_preferred_bank', sanitize_text_field($_REQUEST['esto_pay_bank_selection']));
                 $order->save();
-            }
-            else {
-                update_post_meta( $order_id, 'esto_preferred_bank', sanitize_text_field( $_REQUEST['esto_pay_bank_selection'] ) );
+            } else {
+                update_post_meta($order_id, 'esto_preferred_bank', sanitize_text_field($_REQUEST['esto_pay_bank_selection']));
             }
         }
     }
@@ -507,17 +478,17 @@ class EstoRequest {
      * <p>Returns true, if WooCommerce version is 3.0 or greater</p>
      * @return bool
      */
-    protected function _isWoo30() {
+    protected function _isWoo30()
+    {
         if (defined('WOOCOMMERCE_VERSION')) {
             return version_compare(WOOCOMMERCE_VERSION, '3.0', '>=');
         }
         return version_compare($this->_getWooCommerce()->version, '3.0', '>=');
     }
 
-    protected function _getWooCommerce() {
+    protected function _getWooCommerce()
+    {
         global $woocommerce;
         return $woocommerce;
     }
-
 }
-

@@ -1,16 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Woocommerce ESTO\n"
-"POT-Creation-Date: 2024-10-29 09:31+0200\n"
-"PO-Revision-Date: 2024-10-29 09:33+0200\n"
+"POT-Creation-Date: 2024-10-29 09:49+0200\n"
+"PO-Revision-Date: 2024-10-29 09:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: lt_LT\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && (n%100<11 || n%100>19) ? 0 : "
-"n%10>=2 && n%10<=9 && (n%100<11 || n%100>19) ? 1 : 2);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -25,35 +24,34 @@ msgstr ""
 #: assets/view/calculator-archive.php:6 assets/view/calculator.php:6
 #, php-format
 msgid "Pay in three equal instalments 3 x %s"
-msgstr "Mokėti 3 vienodomis įmokomis po %s"
+msgstr ""
 
 #: assets/view/calculator-archive.php:6 assets/view/calculator.php:6
 #, php-format
 msgid "Monthly payment from %s"
-msgstr "Preliminari mėnesinė įmoka nuo %s"
+msgstr ""
 
 #: assets/view/calculator-settings.php:36
 msgid "ESTO Woocommerce Settings"
-msgstr "„ESTO Woocommerce“ nuostatos"
+msgstr ""
 
 #: assets/view/calculator-settings.php:44
 msgid "Enable product monthly payment"
-msgstr "Įjungti kasmėnesinį mokėjimą už produktus"
+msgstr ""
 
 #: assets/view/calculator-settings.php:51
 #: assets/view/calculator-settings.php:72
 msgid "Product monthly payment URL"
-msgstr "Kasmėnesinio mokėjimo už produktus URL"
+msgstr ""
 
 #: assets/view/calculator-settings.php:84
 msgid "Default logo"
 msgstr ""
 
 #: assets/view/calculator-settings.php:146
-#, fuzzy, php-format
-#| msgid "Choose logo"
+#, php-format
 msgid "%s logo"
-msgstr "Pasirinkite logotipą"
+msgstr ""
 
 #: assets/view/calculator-settings.php:162
 #, php-format
@@ -82,26 +80,16 @@ msgid "Override logo height (px)"
 msgstr ""
 
 #: assets/view/calculator-settings.php:202
-#, fuzzy
-#| msgid "Show ESTO 3 monthly payment instead of the regular"
 msgid "Show Esto 3 monthly payment instead of the regular"
 msgstr ""
-"Vietoje įprasto mokėjimo plano rodyti „ESTO“ mokėjimo už produktus kas 3 "
-"mėnesius planą"
 
 #: assets/view/calculator-settings.php:209
-#, fuzzy
-#| msgid "Show ESTO 3 monthly payment instead of the regular"
 msgid "Show monthly payment on shop and category pages"
 msgstr ""
-"Vietoje įprasto mokėjimo plano rodyti „ESTO“ mokėjimo už produktus kas 3 "
-"mėnesius planą"
 
 #: assets/view/calculator-settings.php:217
-#, fuzzy
-#| msgid "Enable product monthly payment"
 msgid "Minimum product price to show monthly payment"
-msgstr "Įjungti kasmėnesinį mokėjimą už produktus"
+msgstr ""
 
 #: assets/view/calculator-settings.php:219
 #: assets/view/calculator-settings.php:230
@@ -110,14 +98,12 @@ msgid "Leave empty to use default, which is currently %s"
 msgstr ""
 
 #: assets/view/calculator-settings.php:228
-#, fuzzy
-#| msgid "Enable product monthly payment"
 msgid "Maximum product price to show monthly payment"
-msgstr "Įjungti kasmėnesinį mokėjimą už produktus"
+msgstr ""
 
 #: assets/view/calculator-settings.php:240
 msgid "Save Settings"
-msgstr "Įrašyti nuostatas"
+msgstr ""
 
 #: assets/view/calculator-settings.php:246
 msgid "What to do when the calculator does not show up"
@@ -137,37 +123,36 @@ msgstr ""
 #, php-format
 msgid "%d month"
 msgid_plural "%d months"
-msgstr[0] "%d mėn."
-msgstr[1] "%d mėn."
-msgstr[2] "%d mėn."
+msgstr[0] ""
+msgstr[1] ""
 
 #: esto-payment.php:111
 msgid "Settings"
-msgstr "Nuostatos"
+msgstr ""
 
 #: includes/Payment.php:64
 msgid "ESTO payment gateway"
-msgstr "ESTO mokėjimo portalas"
+msgstr ""
 
 #: includes/Payment.php:72
 msgid "Payment module for paying with ESTO regular hire purchase"
-msgstr "Apmokėjimas su tipiniu ESTO lizingu"
+msgstr ""
 
 #: includes/Payment.php:131
 msgid "Live mode"
-msgstr "Pagrindinis režimas"
+msgstr ""
 
 #: includes/Payment.php:132
 msgid "Test mode"
-msgstr "Bandomasis režimas"
+msgstr ""
 
 #: includes/Payment.php:136
 msgid "Estonia"
-msgstr "Estija"
+msgstr ""
 
 #: includes/Payment.php:137
 msgid "Lithuania"
-msgstr "Lietuva"
+msgstr ""
 
 #: includes/Payment.php:138
 msgid "Latvia"
@@ -178,67 +163,65 @@ msgstr ""
 #: includes/class-wc-esto-x-payment.php:52
 #: includes/class-wc-pay-later-payment.php:38
 msgid "Enable/Disable"
-msgstr "Įjungti / išjungti"
+msgstr ""
 
 #: includes/Payment.php:145
 msgid "Enable ESTO payment module"
-msgstr "Įjungti ESTO mokėjimo modulį"
+msgstr ""
 
 #: includes/Payment.php:149 includes/class-wc-esto-card-payment.php:55
 #: includes/class-wc-esto-pay-payment.php:62
 #: includes/class-wc-esto-x-payment.php:58
 #: includes/class-wc-pay-later-payment.php:44
 msgid "Title"
-msgstr "Pavadinimas"
+msgstr ""
 
 #: includes/Payment.php:151 includes/class-wc-esto-card-payment.php:57
 #: includes/class-wc-esto-pay-payment.php:64
 #: includes/class-wc-esto-x-payment.php:60
 #: includes/class-wc-pay-later-payment.php:46
 msgid "This controls the title which the user sees during checkout."
-msgstr "Tai valdo pavadinimą, kurį naudotojas matys užbaigdamas pirkimą."
+msgstr ""
 
 #: includes/Payment.php:152
 msgid "ESTO hire purchase"
-msgstr "Pirkimas išsimokėtinai su ESTO"
+msgstr ""
 
 #: includes/Payment.php:155 includes/class-wc-esto-card-payment.php:61
 #: includes/class-wc-esto-pay-payment.php:68
 #: includes/class-wc-esto-x-payment.php:64
 #: includes/class-wc-pay-later-payment.php:50
 msgid "Description"
-msgstr "Aprašas"
+msgstr ""
 
 #: includes/Payment.php:157 includes/class-wc-esto-card-payment.php:63
 #: includes/class-wc-esto-pay-payment.php:70
 #: includes/class-wc-esto-x-payment.php:66
 #: includes/class-wc-pay-later-payment.php:52
 msgid "This controls the description which the user sees during checkout."
-msgstr "Tai valdo aprašą, kurį naudotojas matys užbaigdamas pirkimą."
+msgstr ""
 
 #: includes/Payment.php:158
 msgid ""
 "Confirm a purchase in 60 seconds and pay in installments, conveniently and "
 "quickly. Just pay later!"
 msgstr ""
-"Pirk išsimokėtinai su ESTO. Tai taip pat patogu ir greita, lyg mokant "
-"kortele."
 
 #: includes/Payment.php:161 includes/class-wc-esto-card-payment.php:67
 msgid "Show logo"
-msgstr "Rodyti logotipą"
+msgstr ""
 
 #: includes/Payment.php:163
 msgid "Show ESTO logo in checkout"
-msgstr "Užbaigiant pirkimą rodyti ESTO logotipą"
+msgstr ""
 
 #: includes/Payment.php:167 includes/class-wc-esto-pay-payment.php:79
 msgid "Logo"
-msgstr "Logotipas"
+msgstr ""
 
 #: includes/Payment.php:170
 msgid "Click on logo to replace it."
-msgstr "Spustelėkite logotipą, kad jį pakeistumėte."
+msgstr ""
 
 #: includes/Payment.php:173
 msgid "Logo below title"
@@ -250,40 +233,39 @@ msgstr ""
 
 #: includes/Payment.php:179
 msgid "Payment method mode"
-msgstr "Mokėjimo metodo režimas"
+msgstr ""
 
 #: includes/Payment.php:182
 msgid ""
 "Test mode is for development purposes and does not create an actual "
 "transaction"
 msgstr ""
-"Bandomasis režimas skirtas kūrimo tikslams ir nesukuria faktinės transakcijos"
 
 #: includes/Payment.php:186
 msgid "Select endpoint"
-msgstr "Pasirinkite galinį punktą"
+msgstr ""
 
 #: includes/Payment.php:189
 msgid "Choose the correct endpoint to use, depending on your country"
-msgstr "Pasirinkite tinkamą naudotiną galinį punktą pagal savo šalį"
+msgstr ""
 
 #: includes/Payment.php:193
 msgid "Shop ID"
-msgstr "Parduotuvės ID"
+msgstr ""
 
 #: includes/Payment.php:196 includes/Payment.php:214 includes/Payment.php:232
 #: includes/Payment.php:250
 msgid "Shop ID is set by ESTO and can be obtained here"
-msgstr "Parduotuvės ID nustato ESTO ir jį galima gauti čia"
+msgstr ""
 
 #: includes/Payment.php:199
 msgid "Secret API key"
-msgstr "Slaptas API raktas"
+msgstr ""
 
 #: includes/Payment.php:201 includes/Payment.php:219 includes/Payment.php:237
 #: includes/Payment.php:255
 msgid "Secret API key can be obtained here and should be kept secret"
-msgstr "Slaptą API raktą galima gauti čia, jį reikia laikyti slaptai"
+msgstr ""
 
 #: includes/Payment.php:205
 msgid "Endpoint for Estonia"
@@ -298,10 +280,8 @@ msgid "Shop ID for Estonia"
 msgstr ""
 
 #: includes/Payment.php:217
-#, fuzzy
-#| msgid "Secret API key"
 msgid "Secret API key for Estonia"
-msgstr "Slaptas API raktas"
+msgstr ""
 
 #: includes/Payment.php:223
 msgid "Endpoint for Latvia"
@@ -316,10 +296,8 @@ msgid "Shop ID for Latvia"
 msgstr ""
 
 #: includes/Payment.php:235
-#, fuzzy
-#| msgid "Secret API key"
 msgid "Secret API key for Latvia"
-msgstr "Slaptas API raktas"
+msgstr ""
 
 #: includes/Payment.php:241
 msgid "Endpoint for Lithuania"
@@ -330,78 +308,58 @@ msgid "Use different endpoint for Lithuania?"
 msgstr ""
 
 #: includes/Payment.php:247
-#, fuzzy
-#| msgid "Lithuania"
 msgid "Shop ID for Lithuania"
-msgstr "Lietuva"
+msgstr ""
 
 #: includes/Payment.php:253
-#, fuzzy
-#| msgid "Secret API key"
 msgid "Secret API key for Lithuania"
-msgstr "Slaptas API raktas"
+msgstr ""
 
 #: includes/Payment.php:259
 msgid "Min amount"
-msgstr "Minimalus kiekis"
+msgstr ""
 
 #: includes/Payment.php:261
 msgid "The minimum amount, when this module will be shown in checkout"
-msgstr "Minimalus kiekis, kai šis modulis bus rodomas užbaigiant pirkimą"
+msgstr ""
 
 #: includes/Payment.php:265
 msgid "Max amount"
-msgstr "Maksimalus kiekis"
+msgstr ""
 
 #: includes/Payment.php:267
 msgid "The maximum amount, when this module will be shown in checkout"
-msgstr "Maksimalus kiekis, kai šis modulis bus rodomas užbaigiant pirkimą"
+msgstr ""
 
 #: includes/Payment.php:271
 msgid "Only specific countries"
 msgstr ""
 
 #: includes/Payment.php:276
-#, fuzzy
-#| msgid ""
-#| "Specify countries where this method should be disabled. Leave empty to "
-#| "sell everywhere."
 msgid ""
 "Specify countries where this payment method is available. Takes priority "
 "over \"disabled countries\". Leave empty to sell everywhere."
 msgstr ""
-"Nurodykite šalis, kuriose šis metodas turi būti išjungtas. Palikite tuščią, "
-"kad galėtumėte pardavinėti visur."
 
 #: includes/Payment.php:280
 msgid "Disabled countries"
-msgstr "Šalys, kuriose metodas neveikia"
+msgstr ""
 
 #: includes/Payment.php:285
-#, fuzzy
-#| msgid ""
-#| "Specify countries where this method should be disabled. Leave empty to "
-#| "sell everywhere."
 msgid ""
 "Specify countries where ESTO methods should be disabled. Leave empty to sell "
 "everywhere."
 msgstr ""
-"Nurodykite šalis, kuriose šis metodas turi būti išjungtas. Palikite tuščią, "
-"kad galėtumėte pardavinėti visur."
 
 #: includes/Payment.php:289
-#, fuzzy
-#| msgid "Disabled countries"
 msgid "Disabled countries for this method"
-msgstr "Šalys, kuriose metodas neveikia"
+msgstr ""
 
 #: includes/Payment.php:294
 msgid ""
 "Specify countries where this method should be disabled. Leave empty to sell "
 "everywhere."
 msgstr ""
-"Nurodykite šalis, kuriose šis metodas turi būti išjungtas. Palikite tuščią, "
-"kad galėtumėte pardavinėti visur."
 
 #: includes/Payment.php:298
 msgid "Set order status to \"on-hold\" until payment confirmation"
@@ -424,72 +382,62 @@ msgid ""
 msgstr ""
 
 #: includes/Payment.php:313
-#, fuzzy
-#| msgid "Description"
 msgid "Show description logo"
-msgstr "Aprašas"
+msgstr ""
 
 #: includes/Payment.php:315
-#, fuzzy
-#| msgid "Show ESTO logo in checkout"
 msgid "Show ESTO logo in payment method description"
-msgstr "Užbaigiant pirkimą rodyti ESTO logotipą"
+msgstr ""
 
 #: includes/Payment.php:327
-#, fuzzy, php-format
-#| msgid "Description"
+#, php-format
 msgid "Description logo in %s"
-msgstr "Aprašas"
+msgstr ""
 
 #: includes/Payment.php:330 includes/Payment.php:370 includes/Payment.php:378
-#, fuzzy
-#| msgid "Click on logo to replace it."
 msgid "Click on logo to replace it or enter url above."
-msgstr "Spustelėkite logotipą, kad jį pakeistumėte."
+msgstr ""
 
 #: includes/Payment.php:367
-#, fuzzy, php-format
-#| msgid "Description"
+#, php-format
 msgid "Main logo in %s"
-msgstr "Aprašas"
+msgstr ""
 
 #: includes/Payment.php:375
-#, fuzzy
-#| msgid "Description"
 msgid "Description logo"
-msgstr "Aprašas"
+msgstr ""
 
 #: includes/Payment.php:453
 msgid "Choose logo"
-msgstr "Pasirinkite logotipą"
+msgstr ""
 
 #: includes/Payment.php:455
 msgid "Set Logo"
-msgstr "Nustatykite logotipą"
+msgstr ""
 
 #: includes/Payment.php:545
 msgid "Shop ID is required!"
-msgstr "Reikalingas parduotuvės ID!"
+msgstr ""
 
 #: includes/Payment.php:550
 msgid "Secret key is required!"
-msgstr "Reikalingas slaptas raktas!"
+msgstr ""
 
 #: includes/Payment.php:556
 msgid "Min amount is required!"
-msgstr "Reikalingas minimalus kiekis!"
+msgstr ""
 
 #: includes/Payment.php:561
 msgid "Max amount is required!"
-msgstr "Reikalingas maksimalus kiekis!"
+msgstr ""
 
 #: includes/Payment.php:643
 msgid "Thank you for the order, please click on the button to proceed."
-msgstr "Dėkojame, kad užsisakėte, spustelėkite mygtuką ir tęskite."
+msgstr ""
 
 #: includes/Payment.php:664
 msgid "Thank you for the order. You will be redirected to ESTO..."
-msgstr "Dėkojame, kad užsisakėte. Būsite peradresuoti į ESTO…"
+msgstr ""
 
 #: includes/class-wc-esto-card-payment.php:26
 #: includes/class-wc-esto-card-payment.php:32
@@ -502,27 +450,22 @@ msgid ""
 "ESTO Pay card payments are Visa and Mastercard credit/debit card payments. "
 "Contact ESTO Partner Support for additional information and activation."
 msgstr ""
-"ESTO Pay apmokėjimas kortele apima „Visa“ ir „Mastercard“ kredito / debeto "
-"korteles. Dėl papildomos informacijos ir aktyvavimo susisiekite su ESTO "
-"partnerių palaikymo komanda."
 
 #: includes/class-wc-esto-card-payment.php:58
 msgid "Pay by card (Visa/Mastercard)"
-msgstr "Apmokėti kortele (Visa/Mastercard)"
+msgstr ""
 
 #: includes/class-wc-esto-card-payment.php:64
 msgid "Payment is made using a secure payment solution."
-msgstr "Apmokėjimas atliekamas naudojant saugų mokėjimo sprendimą"
+msgstr ""
 
 #: includes/class-wc-esto-card-payment.php:69
-#, fuzzy
-#| msgid "Show ESTO logo in checkout"
 msgid "Show Visa/Mastercard logo in checkout"
-msgstr "Užbaigiant pirkimą rodyti ESTO logotipą"
+msgstr ""
 
 #: includes/class-wc-esto-pay-payment.php:31
 msgid "ESTO Pay"
-msgstr "ESTO Pay"
+msgstr ""
 
 #: includes/class-wc-esto-pay-payment.php:32
 msgid ""
@@ -530,50 +473,36 @@ msgid ""
 "Finnish banklinks. Contact ESTO Partner Support for additional information "
 "and activation."
 msgstr ""
-"ESTO Pay yra tiesioginis apmokėjimas kortelėmis, e. bankininkyste ir pan. "
-"Norėdami gauti daugiau informacijos susisiekite su ESTO klientų aptarnavimo "
-"personalu."
 
 #: includes/class-wc-esto-pay-payment.php:37
 msgid "ESTO Pay payment gateway"
-msgstr "ESTO mokėjimo portalas „ESTO Pay“"
+msgstr ""
 
 #: includes/class-wc-esto-pay-payment.php:58
-#, fuzzy
-#| msgid ""
-#| "ESTO Pay is a direct payment method for credit cards, banklinks, etc. "
-#| "Contact ESTO support for additional information"
 msgid ""
 "ESTO Pay is a direct payment method for credit cards, banklinks, etc. "
 "Contact ESTO support for additional information."
 msgstr ""
-"ESTO Pay yra elektroninis mokėjimo metodas skirtas kredito kortelėms, el. "
-"bankininkystei ir pan. Norėdami gauti informacijos susisiekite su ESTO "
-"klientų aptarnavimo skyriumi."
 
 #: includes/class-wc-esto-pay-payment.php:65
 msgid "Pay in the bank"
-msgstr "Apmokėti per banką"
+msgstr ""
 
 #: includes/class-wc-esto-pay-payment.php:71
 msgid ""
 "Payment is made using a secure payment solution called KEVIN (UAB “KEVIN "
 "EU”), which is licensed by the Bank of Lithuania."
 msgstr ""
-"Mokėjimas yra atliekamas naudojant saugų techninį sprendimą „Klix by "
-"Citadele” (AS „Citadele banka“ Lietuvos filialas)."
+"Payment is made using a secure payment solution called “Klix by Citadele” "
+"(AS “Citadele banka” Eesti filiaal)."
 
 #: includes/class-wc-esto-pay-payment.php:74
-#, fuzzy
-#| msgid "Show logo"
 msgid "Show Logo"
-msgstr "Rodyti logotipą"
+msgstr ""
 
 #: includes/class-wc-esto-pay-payment.php:83
-#, fuzzy
-#| msgid "Show logo"
 msgid "Show bank logos"
-msgstr "Rodyti logotipą"
+msgstr ""
 
 #: includes/class-wc-esto-pay-payment.php:85
 msgid "This option enables showing country dropdown and bank logos"
@@ -621,95 +550,78 @@ msgstr ""
 
 #: includes/class-wc-esto-pay-payment.php:214
 msgid "Please select a bank"
-msgstr "Pasirinkite banką"
+msgstr ""
 
 #: includes/class-wc-esto-x-payment.php:23
-#, fuzzy
-#| msgid "Estonia"
 msgid "Esto X"
-msgstr "Estija"
+msgstr ""
 
 #: includes/class-wc-esto-x-payment.php:24
-#, fuzzy
-#| msgid ""
-#| "ESTO X is an alternative ESTO payment method. For more information and "
-#| "activation please contact ESTO Partner Support."
 msgid ""
 "ESTO X is an alternative ESTO payment method. For more information and "
 "activation, please contact ESTO Partner Support."
 msgstr ""
-"ESTO X tai lankstus būdas atsiskaityti su ESTO. Norėdami sužinoti daugiau, "
-"kreipkitės į partnerių aptarnavimo personalą."
 
 #: includes/class-wc-esto-x-payment.php:32
 msgid "ESTO X payment gateway"
-msgstr "Mokėjimo portalas ESTO X"
+msgstr ""
 
 #: includes/class-wc-esto-x-payment.php:54
 msgid ""
 "ESTO X is a campaign of ESTO. Contact ESTO support for additional "
 "information."
 msgstr ""
-"ESTO X yra ESTO kampanija. Norėdami daugiau informacijos kreipkitės į ESTO "
-"klientų aptarnavimo skyrių."
 
 #: includes/class-wc-esto-x-payment.php:61
 msgid "Pay in 3 equal parts. At no extra charge."
-msgstr "Sumokėk 3-imis lygiomis dalimis. Mokant laiku - be papildomų mokesčių."
+msgstr ""
 
 #: includes/class-wc-esto-x-payment.php:67
 msgid "ESTO 3 - pay without additional cost within 3 months! Just pay later."
 msgstr ""
-"ESTO 3 - be pabrangimo, mokant laiku, 3-imis lygiomis dalimis, per 3 mėn."
 
 #: includes/class-wc-esto-x-payment.php:70
 msgid "Show calculator"
 msgstr ""
 
 #: includes/class-wc-esto-x-payment.php:72
-#, fuzzy
-#| msgid "Show ESTO logo in checkout"
 msgid "Show calculator in the payment method's description area in checkout."
-msgstr "Užbaigiant pirkimą rodyti ESTO logotipą"
+msgstr ""
 
 #: includes/class-wc-esto-x-payment.php:137
 #, php-format
 msgid "%d interest-free payments over %d months"
-msgstr "%d mokėjimai per %d mėnesius"
+msgstr ""
 
 #: includes/class-wc-pay-later-payment.php:18
 msgid "Pay Later"
-msgstr "Mokėti vėliau"
+msgstr ""
 
 #: includes/class-wc-pay-later-payment.php:19
 msgid ""
 "Pay Later is an alternative ESTO payment method. For more information and "
 "activation please contact ESTO Partner Support."
 msgstr ""
-"„Mokėk vėliau“ yra atsiskaitymo būdas su ESTO. Norėdami sužinoti daugiau, "
-"kreipkitės į partnerių aptarnavimo personalą."
 
 #: includes/class-wc-pay-later-payment.php:24
 msgid "ESTO Pay Later payment gateway"
-msgstr "ESTO mokėjimo portalas „Mokėti vėliau“"
+msgstr ""
 
 #: includes/class-wc-pay-later-payment.php:40
 msgid ""
 "Pay Later is a campaign of ESTO. Contact ESTO support for additional "
 "information."
 msgstr ""
-"„Mokėti vėliau“ yra ESTO kampanija. Norėdami daugiau informacijos kreipkitės "
-"į ESTO klientų aptarnavimo skyrių."
 
 #: includes/class-wc-pay-later-payment.php:47
 msgid "Buy now and pay later!"
-msgstr "Mokėk vėliau"
+msgstr ""
 
 #: includes/class-wc-pay-later-payment.php:53
 msgid ""
 "Just confirm your order with 3 clicks and take your time! Pay later, within "
 "30 days, without any extra fees!"
-msgstr "Patvirtink savo užsakymą dabar, o apmokėk per 30 dienų."
+msgstr ""
 
 #: woo-includes/class-woothemes-plugin-updater.php:147
 msgid "WooThemes Updates"
@@ -768,10 +680,8 @@ msgid "Hide This Message"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-#, fuzzy
-#| msgid "ESTO Woocommerce Settings"
 msgid "Woocommerce ESTO"
-msgstr "„ESTO Woocommerce“ nuostatos"
+msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid "https://www.esto.ee"
@@ -788,59 +698,3 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "www.rebing.ee"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Show ESTO 3 monthly payment instead of the regular"
-#~ msgid "Show Esto 3 monthly payment without contract fees"
-#~ msgstr ""
-#~ "Vietoje įprasto mokėjimo plano rodyti „ESTO“ mokėjimo už produktus kas 3 "
-#~ "mėnesius planą"
-
-#~ msgid "Buy now, pay later!"
-#~ msgstr "Pirkite dabar, mokėkite vėliau!"
-
-#~ msgid ""
-#~ "Pay Later gives you an extra 30 days to pay for your order. Get the "
-#~ "service or goods instantly and pay whenever you like within the next 30 "
-#~ "days, with no additional fees!"
-#~ msgstr ""
-#~ "Funkcija „Mokėti vėliau“ suteikia 30 papildomų dienų užsakymui apmokėti. "
-#~ "Paslaugas ar prekes gaukite iškart, o mokėkite, kada norite per "
-#~ "ateinančias 30 dienų be papildomų mokesčių!"
-
-#~ msgid "Today"
-#~ msgstr "Šiandien"
-
-#~ msgid ""
-#~ "Pick a loan period that fits your budget and complete the purchase with "
-#~ "digital signing (Mobile-ID, Smart-ID or ID-card signature). Simple as "
-#~ "that!"
-#~ msgstr ""
-#~ "Išsirinkite Jums tinkamiausią mėnesinę įmoką ar sutarties terminą ir "
-#~ "užbaikite pirkimą pasirašydami skaitmeniniu būdu (m. parašu, Smart-ID "
-#~ "programėle ar e. bankininkyste). Tai taip paprasta!"
-
-#~ msgid "Safe and convenient payments via bank link!"
-#~ msgstr "Apmokėjimas per e. bankininkystę"
-
-#~ msgid ""
-#~ "Make a payment from a bank account in SEB, Swedbank, LHV, Coop, Luminor "
-#~ "or Citadele bank, or a Revolut payment. Payments from Latvian, Lithuanian "
-#~ "or Finnish banks available as well. These secure and convenient payment "
-#~ "methods are brought to you by ESTO Pay."
-#~ msgstr ""
-#~ "Mokėjimas atliekamas naudojantis saugia KEVIN atsiskaitymo sistema (UAB "
-#~ "\"KEVIN EU\"). Ji yra licencijuota Lietuvos Banko."
-
-#~ msgid "ESTO 3"
-#~ msgstr "ESTO 3"
-
-#~ msgid ""
-#~ "Payment solution – pay for your shopping cart in three equal instalments "
-#~ "with no additional fees!"
-#~ msgstr ""
-#~ "Mokėjimo sprendimas – už pirkinių krepšelyje esančias prekes mokėkite "
-#~ "tris vienodas įmokas be papildomų mokesčių!"
-
-#~ msgid "ESTO X"
-#~ msgstr "ESTO X"

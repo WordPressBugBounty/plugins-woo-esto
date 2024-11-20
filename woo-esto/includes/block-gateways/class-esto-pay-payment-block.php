@@ -18,7 +18,7 @@ class WC_Esto_Pay_Payment_Block extends WC_Esto_Payment_Block {
 
 		return [
 			'title'           => $this->get_setting( 'title' ),
-			'description'     => $this->get_setting( 'description' ),
+			'description'     => __('Payment is made using a secure payment solution called KEVIN (UAB “KEVIN EU”), which is licensed by the Bank of Lithuania.', 'woo-esto'),
 			'icon'            => $this->icon,
 			'bank_logos'      => $bank_logos,
 			'show_bank_logos' => $show_bank_logos,

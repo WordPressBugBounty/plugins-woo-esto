@@ -1,9 +1,9 @@
 === Woocommerce ESTO ===
 Contributors: rebing
-Stable tag: 2.25.4
+Stable tag: 2.25.5
 Requires at least: 4.2
-Tested up to: 6.5.3
-Requires PHP: 5.5
+Tested up to: 6.6.2
+Requires PHP: 8.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,15 @@ PRODUCT CALCULATOR
 5. Uncomment the required line in '<plugin_url>/includes/Calculator.php'@display_calculator
 
 == Changelog ==
+
+= 2.25.5 =
+* Update --- Esto Pay disclaimers
+* Update  --- Translation files update
+* Update  --- PHP 8.2 support
+* Update  --- Tested versions
+* Update  --- Code quality improvements
+* Removed --- Finland banklinks
+* Removed --- Esto Pay payment description
 
 = 2.25.4 =
 * Fix --- Fix logo source for block checkout
