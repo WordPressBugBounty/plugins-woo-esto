@@ -1,6 +1,6 @@
 === Woocommerce ESTO ===
 Contributors: rebing
-Stable tag: 2.25.6
+Stable tag: 2.25.7
 Requires at least: 4.2
 Tested up to: 6.6.2
 Requires PHP: 7.3
@@ -34,6 +34,9 @@ PRODUCT CALCULATOR
 5. Uncomment the required line in '<plugin_url>/includes/Calculator.php'@display_calculator
 
 == Changelog ==
+
+= 2.25.7 =
+* Fix --- Pay later & ESTO X & Esto card redirection issues
 
 = 2.25.6 =
 * Compatibility --- Allow plugin updates for PHP versions starting from 7.3
