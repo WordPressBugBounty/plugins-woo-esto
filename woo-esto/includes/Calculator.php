@@ -75,7 +75,13 @@ class WC_Esto_Calculator
         }
     }
 
-    public function display_calculator()
+    /**
+     * Displays the Esto calculator on the product page.
+     * Allow Advanced Dynamic Pricing for WooCommerce to override the price.
+     *
+     * @return void
+     */
+    public function display_calculator(): void
     {
         if (self::$is_current_billing_country_disabled || self::is_current_billing_country_disabled()) {
             return;
@@ -83,33 +89,41 @@ class WC_Esto_Calculator
 
         global $product;
 
-        if (!$product) {
+        if (!$product instanceof WC_Product) {
             return;
         }
 
         $this->shopId = esto_get_api_field('shop_id');
 
-        $price = method_exists($product, 'get_variation_price')
-            ? $product->get_variation_price('min', true)
-            : wc_get_price_to_display($product);
+        // Fetch the price: prioritize sale price if applicable
+        $price = $product->is_on_sale()
+            ? $product->get_sale_price()
+            : $product->get_regular_price();
+
+        $price = wc_get_price_to_display($product, ['price' => $price]);
+
+        if (!is_numeric($price) || $price <= 0) {
+            return; // Prevent further calculations if price is invalid
+        }
 
         $estoMonthlyPayment = false;
-        $period_months = false;
+        $period_months = null;
 
         $min_price = $this->get_setting('minimum_price') ?: self::MIN_PRICE_DEFAULT;
         $max_price = $this->get_setting('maximum_price') ?: self::MAX_PRICE_DEFAULT;
 
         if ($price >= $min_price && $price <= $max_price) {
-
             $show_esto_3 = $this->get_setting('show_esto_3') ?? false;
 
             if ($show_esto_3) {
-                $estoMonthlyPayment = $price / 3;
-                $estoMonthlyPayment = wc_price($estoMonthlyPayment);
+                $estoMonthlyPayment = wc_price($price / 3);
             } else {
                 $res = $this->get_product_price_from_api($product);
-                $estoMonthlyPayment = wc_price($res->monthly_payment);
-                $period_months = $res->period_months ?? false;
+
+                if ($res && isset($res->monthly_payment)) {
+                    $estoMonthlyPayment = wc_price($res->monthly_payment);
+                    $period_months = $res->period_months ?? null;
+                }
             }
 
             if ($estoMonthlyPayment) {
@@ -121,27 +135,23 @@ class WC_Esto_Calculator
                     $logo_width = 110;
                     $logo_height = 0;
 
-                    if (!empty($this->get_setting('esto_calc_logo'))) {
-                        $image_attributes = wp_get_attachment_image_src($this->get_setting('esto_calc_logo'), 'full');
-                        $logoSrc = $image_attributes[0];
-                        $logo_width = $image_attributes[1];
-                        $logo_height = $image_attributes[2];
+                    $esto_calc_logo = $this->get_setting('esto_calc_logo');
+                    if (!empty($esto_calc_logo)) {
+                        $image_attributes = wp_get_attachment_image_src($esto_calc_logo, 'full');
+                        if ($image_attributes) {
+                            [$logoSrc, $logo_width, $logo_height] = $image_attributes;
+                        }
                     }
 
                     if (!$current_language) {
                         $current_language = substr(get_locale(), 0, 2);
                     }
 
-                    if ($current_language) {
-                        $logo_id = $this->get_setting('calculator_logo_url_' . $current_language);
-
-                        if ($logo_id) {
-                            $logo_attachment = wp_get_attachment_image_src($logo_id, 'full');
-                            if (!empty($logo_attachment)) {
-                                $logoSrc = $logo_attachment[0];
-                                $logo_width = $logo_attachment[1];
-                                $logo_height = $logo_attachment[2];
-                            }
+                    $calculator_logo_url = $this->get_setting('calculator_logo_url_' . $current_language);
+                    if ($calculator_logo_url) {
+                        $logo_attachment = wp_get_attachment_image_src($calculator_logo_url, 'full');
+                        if ($logo_attachment) {
+                            [$logoSrc, $logo_width, $logo_height] = $logo_attachment;
                         }
                     }
 
@@ -175,20 +185,33 @@ class WC_Esto_Calculator
         return $res;
     }
 
+    /**
+     * Enqueue calculator styles.
+     * Using jquery to add custom styles to the page.
+     *
+     * @return void
+     */
     public function wp_head()
     {
         wp_enqueue_script('jquery');
-?>
-        <style type="text/css">
-            .monthly_payment {
-                font-size: 12px;
-            }
-
-            .products .product .esto_calculator {
-                margin-bottom: 16px;
-            }
-        </style>
-<?php
+        ?>
+        <script>
+            (function ($) {
+                const styles = `
+                .monthly_payment {
+                    font-size: 12px;
+                }
+                .products .product .esto_calculator {
+                    margin-bottom: 16px;
+                }
+            `;
+                const styleSheet = document.createElement('style');
+                styleSheet.type = 'text/css';
+                styleSheet.innerText = styles;
+                document.head.appendChild(styleSheet);
+            })(jQuery);
+        </script>
+        <?php
     }
 
     public function admin_menu()

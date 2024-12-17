@@ -3,13 +3,13 @@
   Plugin Name: Woocommerce ESTO
   Plugin URI:  https://www.esto.ee
   Description: Adds ESTO redirect link to a Woocommerce instance
-  Version:     2.25.7
+  Version:     2.25.8
   Author:      Mikk Mihkel Nurges, Rebing OÜ
   Author URI:  www.rebing.ee
   License:     GPL2
   License URI: https://www.gnu.org/licenses/gpl-2.0.html
   Text Domain: woo-esto
-  WC tested up to: 8.8.3
+  WC tested up to: 9.4.3
 
   Woocommerce ESTO is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -315,3 +315,20 @@ add_action('before_woocommerce_init', function () {
 		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('cart_checkout_blocks', __FILE__, true);
 	}
 });
+
+/**
+ * Filter to override the payment gateway title for ESTO Pay.
+ *
+ * This filter ensures the payment method title is fixed to "Pay in the bank"
+ * regardless of the admin settings or database values. Needed for supporting different languages
+ *
+ * @param string $title
+ * @param string $gateway_id
+ * @return string
+ */
+add_filter('woocommerce_gateway_title', function ($title, $gateway_id) {
+    if ($gateway_id === 'esto_pay') {
+        return __('Pay in the bank', 'woo-esto');
+    }
+    return $title;
+}, 10, 2);

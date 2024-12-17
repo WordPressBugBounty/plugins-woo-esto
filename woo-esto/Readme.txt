@@ -1,8 +1,8 @@
 === Woocommerce ESTO ===
 Contributors: rebing
-Stable tag: 2.25.7
+Stable tag: 2.25.8
 Requires at least: 4.2
-Tested up to: 6.6.2
+Tested up to: 6.7.1
 Requires PHP: 7.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -34,6 +34,13 @@ PRODUCT CALCULATOR
 5. Uncomment the required line in '<plugin_url>/includes/Calculator.php'@display_calculator
 
 == Changelog ==
+
+= 2.25.8 =
+* Update --- ESTO Pay finnish translation added to checkout
+* Removed -- ESTO Pay title field from settings
+* Removed -- ESTO Pay description field from settings
+* Compatibility --- Calculator has Advanced Dynamic Pricing for WooCommerce support
+* Minor --- Code quality improvements
 
 = 2.25.7 =
 * Fix --- Pay later & ESTO X & Esto card redirection issues

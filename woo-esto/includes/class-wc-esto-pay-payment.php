@@ -58,18 +58,6 @@ class WC_Esto_Pay_Payment extends WC_Esto_Payment
                 'label' => __('ESTO Pay is a direct payment method for credit cards, banklinks, etc. Contact ESTO support for additional information.', 'woo-esto'),
                 'default' => 'no',
             ],
-            'title' => [
-                'title' => __('Title', 'woo-esto'),
-                'type' => 'text',
-                'description' => __('This controls the title which the user sees during checkout.', 'woo-esto'),
-                'default' => __('Pay in the bank', 'woo-esto'),
-            ],
-            'description' => [
-                'title' => __('Description', 'woo-esto'),
-                'type' => 'textarea',
-                'description' => __('This controls the description which the user sees during checkout.', 'woo-esto'),
-                'default' => __('Payment is made using a secure payment solution called KEVIN (UAB “KEVIN EU”), which is licensed by the Bank of Lithuania.', 'woo-esto'),
-            ],
             'show_logo' => [
                 'title' => __('Show Logo', 'woo-esto'),
                 'type' => 'checkbox',
