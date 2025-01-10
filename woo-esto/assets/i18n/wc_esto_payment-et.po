@@ -91,3 +91,5 @@ msgstr "Maksimaalne summa on vajalik!"
 
 msgid "User completed payment"
 msgstr "Kasutaja lõpetas makse"
+
+

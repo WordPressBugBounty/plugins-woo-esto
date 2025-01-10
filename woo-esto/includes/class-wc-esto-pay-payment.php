@@ -25,7 +25,7 @@ class WC_Esto_Pay_Payment extends WC_Esto_Payment
     /**
      * Constructor for the payment gateway.
      */
-    function __construct()
+    public function __construct()
     {
         $this->id = 'esto_pay';
         $this->method_title = __('ESTO Pay', 'woo-esto');
@@ -47,7 +47,7 @@ class WC_Esto_Pay_Payment extends WC_Esto_Payment
     /**
      * Initialize the form fields for the payment gateway.
      */
-    function init_form_fields()
+    public function init_form_fields()
     {
         parent::init_form_fields();
 
@@ -133,7 +133,8 @@ class WC_Esto_Pay_Payment extends WC_Esto_Payment
      */
     public function payment_fields()
     {
-        $description = __('Payment is made using a secure payment solution called KEVIN (UAB “KEVIN EU”), which is licensed by the Bank of Lithuania.', 'woo-esto');
+
+        $description = __('Payment is made using a secure payment solution called “Klix by Citadele” (AS “Citadele banka” Eesti filiaal)', 'woo-esto');
         if ($description) {
             echo wpautop(wptexturize($description));
         }
@@ -144,67 +145,71 @@ class WC_Esto_Pay_Payment extends WC_Esto_Payment
     /**
      * Display the bank logos dropdown and layout.
      */
-    public function print_bank_logos_html() {
-        if ( $this->get_option( 'show_bank_logos' ) == 'no' ) {
+    public function print_bank_logos_html()
+    {
+        if ($this->get_option('show_bank_logos') == 'no') {
             return;
         }
 
         // Get connection mode
         $test_mode = false; // by default
         $payment_settings = get_option('woocommerce_esto_settings', null);
-        if ($payment_settings && !empty($payment_settings['connection_mode']) && $payment_settings['connection_mode'] == 'test') $test_mode = true;
+        if ($payment_settings && !empty($payment_settings['connection_mode']) && $payment_settings['connection_mode'] == 'test') {
+            $test_mode = true;
+        }
 
         /** @var array $country_keys */
-        $country_keys = $this->get_option( 'countries', ['EE', 'LV', 'LT']);
+        $country_keys = $this->get_option('countries', ['EE', 'LV', 'LT']);
 
         $wc_countries = WC()->countries->get_countries();
         $countries = [];
 
-        foreach ($country_keys as $country_key)
-        {
-            $countries[strtolower($country_key)] = __( $wc_countries[$country_key], 'woocommerce' );
+        foreach ($country_keys as $country_key) {
+            $countries[strtolower($country_key)] = __($wc_countries[$country_key], 'woocommerce');
         }
 
-        $logos              = WC()->session->get( 'esto_logos' );
-        $check_country_keys = WC()->session->get( 'esto_country_keys');
-        $check_logos_time   = ( (int) WC()->session->get( 'esto_logos_time_' . esto_get_country(), time() ) + 600 );
+        $logos              = WC()->session->get('esto_logos');
+        $check_country_keys = WC()->session->get('esto_country_keys');
+        $check_logos_time   = ((int) WC()->session->get('esto_logos_time_' . esto_get_country(), time()) + 600);
 
-        if ($check_logos_time < time() || empty($logos) || ($check_country_keys !== implode('-', $country_keys)))  {
+        if ($check_logos_time < time() || empty($logos) || ($check_country_keys !== implode('-', $country_keys))) {
 
             $logos = [];
 
-            foreach ( $countries as $key => $val ) {
+            foreach ($countries as $key => $val) {
 
-                $url  = esto_get_api_url() . "v2/purchase/payment-methods?country_code=" . strtoupper( $key );
-                if ($test_mode) $url .= "&test_mode=1";
-                $curl = curl_init( $url );
-                curl_setopt( $curl, CURLOPT_URL, $url );
-                curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
+                $url  = esto_get_api_url() . "v2/purchase/payment-methods?country_code=" . strtoupper($key);
+                if ($test_mode) {
+                    $url .= "&test_mode=1";
+                }
+                $curl = curl_init($url);
+                curl_setopt($curl, CURLOPT_URL, $url);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-                curl_setopt( $curl, CURLOPT_HTTPHEADER, array(
+                curl_setopt($curl, CURLOPT_HTTPHEADER, array(
                     "Content-Type: application/json, application/x-www-form-urlencoded"
-                ) );
+                ));
 
-                curl_setopt( $curl, CURLOPT_USERPWD, $this->shop_id . ":" . $this->secret_key );
-                curl_setopt( $curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC );
+                curl_setopt($curl, CURLOPT_USERPWD, $this->shop_id . ":" . $this->secret_key);
+                curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 
-                curl_setopt( $curl, CURLOPT_SSL_VERIFYHOST, false );
-                curl_setopt( $curl, CURLOPT_SSL_VERIFYPEER, false );
+                curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+                curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
-                $resp = curl_exec( $curl );
-                curl_close( $curl );
+                $resp = curl_exec($curl);
+                curl_close($curl);
 
-                $data = json_decode( $resp );
+                $data = json_decode($resp);
 
-                if ( ! empty( $data ) ) {
+                if (! empty($data)) {
 
-                    foreach ( $data as $row ) {
+                    foreach ($data as $row) {
 
-                        if ( $row->type != 'BANKLINK' ) {
+                        if ($row->type != 'BANKLINK') {
                             continue;
                         }
 
-                        if ( isset( $logos[ $key ] ) === false ) {
+                        if (isset($logos[ $key ]) === false) {
                             $logos[ $key ] = [];
                         }
 
@@ -230,37 +235,36 @@ class WC_Esto_Pay_Payment extends WC_Esto_Payment
                 $default_country = 'ee';
         }
 
-        $layout = $this->get_option( 'bank_logos_layout' );
+        $layout = $this->get_option('bank_logos_layout');
 
-        if ( method_exists( WC()->customer, 'get_billing_country' ) ) {
+        if (method_exists(WC()->customer, 'get_billing_country')) {
             $current_country = WC()->customer->get_billing_country();
-        }
-        else {
+        } else {
             $current_country = WC()->customer->get_country();
         }
 
-        $current_country = strtolower( $current_country );
+        $current_country = strtolower($current_country);
 
-        if ( isset( $logos[ $current_country ] ) ) {
+        if (isset($logos[ $current_country ])) {
             $default_country = $current_country;
         }
 
         ?>
         <select class="esto-pay-countries">
-            <?php foreach ( $countries as $country_code => $country_name ) : ?>
-                <option value="<?= $country_code ?>"<?php selected( $default_country, $country_code, true ) ?>><?= $country_name ?></option>
+            <?php foreach ($countries as $country_code => $country_name) : ?>
+                <option value="<?= $country_code ?>"<?php selected($default_country, $country_code, true) ?>><?= $country_name ?></option>
             <?php endforeach; ?>
         </select>
 
         <div class="esto-pay-logos esto-pay-logos-layout-<?= $layout ?>">
             <input type="hidden" name="esto_pay_bank_selection" value="">
-            <?php foreach ( $logos as $country_key => $country_logos ) :
+            <?php foreach ($logos as $country_key => $country_logos) :
                 $style = $country_key != $default_country ? ' style="display: none;"' : '';
                 ?>
                 <div class="esto-pay-logos__country esto-pay-logos__country--<?= $country_key ?>"<?= $style ?>>
-                    <?php foreach ( $country_logos as $logo ) : ?>
+                    <?php foreach ($country_logos as $logo) : ?>
                         <div class="esto-pay-logo esto-pay-logo__<?= strtolower($logo->name) ?>" data-bank-id="<?= $logo->key ?>">
-                            <img src="<?= apply_filters( 'woo_esto_banklink_logo', $logo->logo_url, $logo->key, $country_key ) ?>">
+                            <img src="<?= apply_filters('woo_esto_banklink_logo', $logo->logo_url, $logo->key, $country_key) ?>">
                         </div>
                               <?php endforeach; ?>
                 </div>

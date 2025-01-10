@@ -1,6 +1,6 @@
 === Woocommerce ESTO ===
 Contributors: rebing
-Stable tag: 2.25.8
+Stable tag: 2.25.9
 Requires at least: 4.2
 Tested up to: 6.7.1
 Requires PHP: 7.3
@@ -34,6 +34,13 @@ PRODUCT CALCULATOR
 5. Uncomment the required line in '<plugin_url>/includes/Calculator.php'@display_calculator
 
 == Changelog ==
+
+= 2.25.9 =
+* Fix --- New translation strings for Esto Pay
+* Fix --- Card payment russian translation changed
+* Dependent --- WooCommerce have to be installed and activated
+* Changed --- Plugin settings link now redirects to the gateway settings page
+
 
 = 2.25.8 =
 * Update --- ESTO Pay finnish translation added to checkout

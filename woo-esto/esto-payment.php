@@ -1,9 +1,10 @@
 <?php
+
 /*
   Plugin Name: Woocommerce ESTO
   Plugin URI:  https://www.esto.ee
   Description: Adds ESTO redirect link to a Woocommerce instance
-  Version:     2.25.8
+  Version:     2.25.9
   Author:      Mikk Mihkel Nurges, Rebing OÜ
   Author URI:  www.rebing.ee
   License:     GPL2
@@ -23,55 +24,91 @@
 */
 
 if (!defined('ABSPATH')) {
-	exit;
+    exit;
 }
+
+/**
+ * Load plugin text domain for translations.
+ */
+function woo_esto_load_textdomain()
+{
+    load_plugin_textdomain('woo-esto', false, dirname(plugin_basename(__FILE__)) . '/languages');
+}
+add_action('plugins_loaded', 'woo_esto_load_textdomain');
+
+/**
+ * Check if WooCommerce is active
+ */
+function woo_esto_check_woocommerce_dependency()
+{
+    if (! class_exists('WooCommerce')) {
+        deactivate_plugins(plugin_basename(__FILE__));
+    }
+}
+add_action('admin_init', 'woo_esto_check_woocommerce_dependency');
+
+
+/**
+ * Prevent plugin activation if WooCommerce is not active
+ */
+function woo_esto_prevent_activation_if_woocommerce_missing()
+{
+    if (! class_exists('WooCommerce')) {
+        wp_die(
+            '<p>' . esc_html__('ESTO Plugin requires WooCommerce to be installed and active. Please install and activate WooCommerce first.', 'woo-esto') . '</p>',
+            esc_html__('Plugin Activation Error', 'woo-esto'),
+            [ 'back_link' => true ]
+        );
+    }
+}
+register_activation_hook(__FILE__, 'woo_esto_prevent_activation_if_woocommerce_missing');
 
 global $esto_plugin_url, $esto_plugin_dir;
 $esto_plugin_dir = plugin_dir_path(__FILE__);
 $esto_plugin_url = plugin_dir_url(__FILE__);
 
 if (!defined('WOO_ESTO_API_URL_EE')) {
-	define('WOO_ESTO_API_URL_EE', 'https://api.esto.ee/');
+    define('WOO_ESTO_API_URL_EE', 'https://api.esto.ee/');
 }
 
 if (!defined('WOO_ESTO_API_URL_LT')) {
-	define('WOO_ESTO_API_URL_LT', 'https://api.estopay.lt/');
+    define('WOO_ESTO_API_URL_LT', 'https://api.estopay.lt/');
 }
 
 if (!defined('WOO_ESTO_API_URL_LV')) {
-	define('WOO_ESTO_API_URL_LV', 'https://api.esto.lv/');
+    define('WOO_ESTO_API_URL_LV', 'https://api.esto.lv/');
 }
 
 if (!function_exists('is_plugin_active_for_network')) {
-	require_once(ABSPATH . '/wp-admin/includes/plugin.php');
+    require_once(ABSPATH . '/wp-admin/includes/plugin.php');
 }
 
 if (
-	in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))
-	|| is_plugin_active_for_network('woocommerce/woocommerce.php')
-	|| class_exists('WooCommerce')
+    in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))
+    || is_plugin_active_for_network('woocommerce/woocommerce.php')
+    || class_exists('WooCommerce')
 ) {
-	add_action('plugins_loaded', 'init_woocommerce_esto_payment');
+    add_action('plugins_loaded', 'init_woocommerce_esto_payment');
 
-	add_action('init', function () {
-		load_plugin_textdomain('woo-esto', false, dirname(plugin_basename(__FILE__)) . '/assets/i18n');
-	});
+    add_action('init', function () {
+        load_plugin_textdomain('woo-esto', false, dirname(plugin_basename(__FILE__)) . '/assets/i18n');
+    });
 
-	if (!class_exists('WC_Esto_Payment')) {
-		require_once $esto_plugin_dir . 'includes/Payment.php';
-	}
+    if (!class_exists('WC_Esto_Payment')) {
+        require_once $esto_plugin_dir . 'includes/Payment.php';
+    }
 
-	if (!class_exists('WC_Esto_Calculator')) {
-		require_once $esto_plugin_dir . 'includes/Calculator.php';
-	}
+    if (!class_exists('WC_Esto_Calculator')) {
+        require_once $esto_plugin_dir . 'includes/Calculator.php';
+    }
 
-	global $esto;
-	$esto = new WC_Esto_Calculator();
+    global $esto;
+    $esto = new WC_Esto_Calculator();
 
-	add_shortcode('esto_monthly_payment', [$esto, 'display_calculator']);
-	add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'esto_add_action_links');
-	add_filter('woocommerce_cancel_unpaid_order', 'esto_prevent_cancelling_orders_early', 10, 2);
-	add_action('woocommerce_blocks_loaded', 'esto_gateway_blocks');
+    add_shortcode('esto_monthly_payment', [$esto, 'display_calculator']);
+    add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'esto_add_action_links');
+    add_filter('woocommerce_cancel_unpaid_order', 'esto_prevent_cancelling_orders_early', 10, 2);
+    add_action('woocommerce_blocks_loaded', 'esto_gateway_blocks');
 }
 
 /**
@@ -81,22 +118,22 @@ if (
  */
 function esto_gateway_blocks()
 {
-	require_once __DIR__ . '/includes/block-gateways/class-esto-payment-block.php';
-	require_once __DIR__ . '/includes/block-gateways/class-esto-x-payment-block.php';
-	require_once __DIR__ . '/includes/block-gateways/class-pay-later-payment-block.php';
-	require_once __DIR__ . '/includes/block-gateways/class-esto-pay-payment-block.php';
-	require_once __DIR__ . '/includes/block-gateways/class-esto-card-payment-block.php';
+    require_once __DIR__ . '/includes/block-gateways/class-esto-payment-block.php';
+    require_once __DIR__ . '/includes/block-gateways/class-esto-x-payment-block.php';
+    require_once __DIR__ . '/includes/block-gateways/class-pay-later-payment-block.php';
+    require_once __DIR__ . '/includes/block-gateways/class-esto-pay-payment-block.php';
+    require_once __DIR__ . '/includes/block-gateways/class-esto-card-payment-block.php';
 
-	add_action(
-		'woocommerce_blocks_payment_method_type_registration',
-		function (Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry) {
-			$payment_method_registry->register(new WC_Esto_Payment_Block);
-			$payment_method_registry->register(new WC_Esto_X_Payment_Block);
-			$payment_method_registry->register(new WC_Esto_Pay_Later_Payment_Block);
-			$payment_method_registry->register(new WC_Esto_Pay_Payment_Block);
-			$payment_method_registry->register(new WC_Esto_Card_Payment_Block);
-		}
-	);
+    add_action(
+        'woocommerce_blocks_payment_method_type_registration',
+        function (Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry) {
+            $payment_method_registry->register(new WC_Esto_Payment_Block());
+            $payment_method_registry->register(new WC_Esto_X_Payment_Block());
+            $payment_method_registry->register(new WC_Esto_Pay_Later_Payment_Block());
+            $payment_method_registry->register(new WC_Esto_Pay_Payment_Block());
+            $payment_method_registry->register(new WC_Esto_Card_Payment_Block());
+        }
+    );
 }
 
 /**
@@ -107,10 +144,10 @@ function esto_gateway_blocks()
  */
 function esto_add_action_links($links)
 {
-	$plugin_links = [
-		'<a href="' . admin_url('admin.php?page=esto-calculator-settings') . '">' . __('Settings', 'woo-esto') . '</a>',
-	];
-	return array_merge($links, $plugin_links);
+    $plugin_links = [
+        '<a href="' . admin_url('admin.php?page=wc-settings&tab=checkout&section=esto') . '">' . __('Settings', 'woo-esto') . '</a>',
+    ];
+    return array_merge($links, $plugin_links);
 }
 
 /**
@@ -120,17 +157,17 @@ function esto_add_action_links($links)
  */
 function esto_get_api_url_from_options()
 {
-	if (defined('WOO_ESTO_API_URL_DEV')) {
-		return WOO_ESTO_API_URL_DEV;
-	}
+    if (defined('WOO_ESTO_API_URL_DEV')) {
+        return WOO_ESTO_API_URL_DEV;
+    }
 
-	$payment_settings = get_option('woocommerce_esto_settings', null);
+    $payment_settings = get_option('woocommerce_esto_settings', null);
 
-	if ($payment_settings && !empty($payment_settings['endpoint'])) {
-		return $payment_settings['endpoint'];
-	}
+    if ($payment_settings && !empty($payment_settings['endpoint'])) {
+        return $payment_settings['endpoint'];
+    }
 
-	return false;
+    return false;
 }
 
 /**
@@ -141,22 +178,22 @@ function esto_get_api_url_from_options()
  */
 function esto_get_api_url($country = '')
 {
-	if (!$country) {
-		$country = esto_get_country();
-	}
+    if (!$country) {
+        $country = esto_get_country();
+    }
 
-	$country = strtoupper($country);
+    $country = strtoupper($country);
 
-	if ($country === 'LT' && esto_api_config_is_active_for_country('lt')) {
-		return WOO_ESTO_API_URL_LT;
-	} elseif ($country === 'LV' && esto_api_config_is_active_for_country('lv')) {
-		return WOO_ESTO_API_URL_LV;
-	} elseif ($country === 'EE' && esto_api_config_is_active_for_country('ee')) {
-		return WOO_ESTO_API_URL_EE;
-	} else {
-		$selected_endpoint_url = esto_get_api_url_from_options();
-		return $selected_endpoint_url ?: WOO_ESTO_API_URL_EE;
-	}
+    if ($country === 'LT' && esto_api_config_is_active_for_country('lt')) {
+        return WOO_ESTO_API_URL_LT;
+    } elseif ($country === 'LV' && esto_api_config_is_active_for_country('lv')) {
+        return WOO_ESTO_API_URL_LV;
+    } elseif ($country === 'EE' && esto_api_config_is_active_for_country('ee')) {
+        return WOO_ESTO_API_URL_EE;
+    } else {
+        $selected_endpoint_url = esto_get_api_url_from_options();
+        return $selected_endpoint_url ?: WOO_ESTO_API_URL_EE;
+    }
 }
 
 /**
@@ -167,19 +204,19 @@ function esto_get_api_url($country = '')
  */
 function esto_api_config_is_active_for_country($country)
 {
-	$payment_settings = get_option('woocommerce_esto_settings', null);
+    $payment_settings = get_option('woocommerce_esto_settings', null);
 
-	if (
-		$payment_settings
-		&& !empty($payment_settings['use_secondary_endpoint_' . $country])
-		&& $payment_settings['use_secondary_endpoint_' . $country] === 'yes'
-		&& !empty($payment_settings['shop_id_' . $country])
-		&& !empty($payment_settings['secret_key_' . $country])
-	) {
-		return true;
-	}
+    if (
+        $payment_settings
+        && !empty($payment_settings['use_secondary_endpoint_' . $country])
+        && $payment_settings['use_secondary_endpoint_' . $country] === 'yes'
+        && !empty($payment_settings['shop_id_' . $country])
+        && !empty($payment_settings['secret_key_' . $country])
+    ) {
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 /**
@@ -189,28 +226,28 @@ function esto_api_config_is_active_for_country($country)
  */
 function esto_get_country()
 {
-	if (isset($_REQUEST['esto_api_country_code'])) {
-		if (in_array($_REQUEST['esto_api_country_code'], ['ee', 'lv', 'lt'])) {
-			return $_REQUEST['esto_api_country_code'];
-		}
-		return '';
-	}
+    if (isset($_REQUEST['esto_api_country_code'])) {
+        if (in_array($_REQUEST['esto_api_country_code'], ['ee', 'lv', 'lt'])) {
+            return $_REQUEST['esto_api_country_code'];
+        }
+        return '';
+    }
 
-	$country = '';
+    $country = '';
 
-	if (function_exists('WC')) {
-		$customer = WC()->customer;
+    if (function_exists('WC')) {
+        $customer = WC()->customer;
 
-		if ($customer) {
-			if (method_exists(WC()->customer, 'get_billing_country')) {
-				$country = WC()->customer->get_billing_country();
-			} else {
-				$country = WC()->customer->get_country();
-			}
-		}
-	}
+        if ($customer) {
+            if (method_exists(WC()->customer, 'get_billing_country')) {
+                $country = WC()->customer->get_billing_country();
+            } else {
+                $country = WC()->customer->get_country();
+            }
+        }
+    }
 
-	return strtolower($country);
+    return strtolower($country);
 }
 
 /**
@@ -221,17 +258,17 @@ function esto_get_country()
  */
 function esto_get_api_field($field)
 {
-	$country = esto_get_country();
-	$payment_settings = get_option('woocommerce_esto_settings', null);
-	$field_value = false;
+    $country = esto_get_country();
+    $payment_settings = get_option('woocommerce_esto_settings', null);
+    $field_value = false;
 
-	if ($payment_settings && $country && esto_api_config_is_active_for_country($country)) {
-		$field_value = $payment_settings[$field . '_' . $country];
-	} else {
-		$field_value = $payment_settings[$field] ?? false;
-	}
+    if ($payment_settings && $country && esto_api_config_is_active_for_country($country)) {
+        $field_value = $payment_settings[$field . '_' . $country];
+    } else {
+        $field_value = $payment_settings[$field] ?? false;
+    }
 
-	return apply_filters('esto_get_api_field', $field_value, $field);
+    return apply_filters('esto_get_api_field', $field_value, $field);
 }
 
 /**
@@ -243,15 +280,15 @@ function esto_get_api_field($field)
  */
 function woo_esto_log($message, $level = 'info')
 {
-	if (function_exists('wc_get_logger')) {
-		$logger = wc_get_logger();
-		if (method_exists($logger, 'log')) {
-			$logger->log($level, $message, ['source' => 'woo-esto']);
-			return;
-		}
-	}
+    if (function_exists('wc_get_logger')) {
+        $logger = wc_get_logger();
+        if (method_exists($logger, 'log')) {
+            $logger->log($level, $message, ['source' => 'woo-esto']);
+            return;
+        }
+    }
 
-	error_log($message);
+    error_log($message);
 }
 
 /**
@@ -263,21 +300,21 @@ function woo_esto_log($message, $level = 'info')
  */
 function esto_prevent_cancelling_orders_early($can_cancel, $order)
 {
-	$payment_method = $order->get_payment_method();
+    $payment_method = $order->get_payment_method();
 
-	if ($payment_method === 'esto_pay') {
-		$order_date = $order->get_date_modified();
-		if ($order_date && ($order_date->getTimestamp() + DAY_IN_SECONDS) > time()) {
-			$can_cancel = false;
-		}
-	} elseif (in_array($payment_method, ['esto', 'esto_x', 'pay_later'])) {
-		$order_date = $order->get_date_modified();
-		if ($order_date && ($order_date->getTimestamp() + 3 * DAY_IN_SECONDS) > time()) {
-			$can_cancel = false;
-		}
-	}
+    if ($payment_method === 'esto_pay') {
+        $order_date = $order->get_date_modified();
+        if ($order_date && ($order_date->getTimestamp() + DAY_IN_SECONDS) > time()) {
+            $can_cancel = false;
+        }
+    } elseif (in_array($payment_method, ['esto', 'esto_x', 'pay_later'])) {
+        $order_date = $order->get_date_modified();
+        if ($order_date && ($order_date->getTimestamp() + 3 * DAY_IN_SECONDS) > time()) {
+            $can_cancel = false;
+        }
+    }
 
-	return $can_cancel;
+    return $can_cancel;
 }
 
 /**
@@ -287,11 +324,11 @@ function esto_prevent_cancelling_orders_early($can_cancel, $order)
  */
 function esto_get_countries()
 {
-	$countries = apply_filters('woocommerce_countries', include WC()->plugin_path() . '/i18n/countries.php');
-	if (apply_filters('woocommerce_sort_countries', true) && function_exists('wc_asort_by_locale')) {
-		wc_asort_by_locale($countries);
-	}
-	return $countries;
+    $countries = apply_filters('woocommerce_countries', include WC()->plugin_path() . '/i18n/countries.php');
+    if (apply_filters('woocommerce_sort_countries', true) && function_exists('wc_asort_by_locale')) {
+        wc_asort_by_locale($countries);
+    }
+    return $countries;
 }
 
 /**
@@ -302,18 +339,18 @@ function esto_get_countries()
  */
 function esto_remove_utm_nooverride($return_url)
 {
-	return remove_query_arg('utm_nooverride', $return_url);
+    return remove_query_arg('utm_nooverride', $return_url);
 }
 
 if (!empty($_REQUEST['esto_auto_callback'])) {
-	add_filter('woocommerce_ga_disable_tracking', '__return_true');
+    add_filter('woocommerce_ga_disable_tracking', '__return_true');
 }
 
 add_action('before_woocommerce_init', function () {
-	if (class_exists(\Automattic\WooCommerce\Utilities\FeaturesUtil::class)) {
-		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', __FILE__, true);
-		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('cart_checkout_blocks', __FILE__, true);
-	}
+    if (class_exists(\Automattic\WooCommerce\Utilities\FeaturesUtil::class)) {
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', __FILE__, true);
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('cart_checkout_blocks', __FILE__, true);
+    }
 });
 
 /**
