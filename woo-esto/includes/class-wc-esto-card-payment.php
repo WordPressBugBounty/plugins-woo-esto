@@ -127,20 +127,46 @@ class WC_Esto_Card_Payment extends WC_Esto_Payment
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
         $resp = curl_exec($curl);
+        $http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $curl_error = curl_error($curl);
         curl_close($curl);
 
-        $data = json_decode($resp);
-        $card_methods = [];
+        if ($http_code !== 200 || !$resp) {
+            $error_message = $curl_error ?: "Invalid API response. HTTP Code: $http_code.";
+            $this->log_error('ESTO API Error', $error_message);
+            return [];
+        }
 
+        $data = json_decode($resp, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            $this->log_error('ESTO API Error', 'Failed to decode JSON response: ' . json_last_error_msg());
+            return [];
+        }
+
+        $card_methods = [];
         if (is_array($data)) {
             foreach ($data as $row) {
-                if (isset($row->type) && $row->type === 'CARD') {
+                if (isset($row['type']) && $row['type'] === 'CARD') {
                     $card_methods[] = $row;
                 }
             }
         }
 
         return $card_methods;
+    }
+
+    /**
+     * Log errors to WooCommerce logs.
+     *
+     * @param string $context Context for the log entry.
+     * @param string $message The error message to log.
+     */
+    protected function log_error(string $context, string $message): void
+    {
+        if (class_exists('WC_Logger')) {
+            $logger = wc_get_logger();
+            $logger->error($context . ': ' . $message, ['source' => 'esto']);
+        }
     }
 
     /**

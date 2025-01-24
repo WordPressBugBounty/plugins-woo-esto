@@ -1,6 +1,6 @@
 === Woocommerce ESTO ===
 Contributors: rebing
-Stable tag: 2.25.9
+Stable tag: 2.25.11
 Requires at least: 4.2
 Tested up to: 6.7.1
 Requires PHP: 7.3
@@ -34,6 +34,11 @@ PRODUCT CALCULATOR
 5. Uncomment the required line in '<plugin_url>/includes/Calculator.php'@display_calculator
 
 == Changelog ==
+
+= 2.25.11 =
+* Added --- ESTO Deals setup
+* Changed --- ESTO Pay logo rendering
+* Changed --- Code fixes
 
 = 2.25.9 =
 * Fix --- New translation strings for Esto Pay

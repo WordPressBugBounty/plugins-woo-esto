@@ -2,22 +2,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Woocommerce ESTO\n"
 "POT-Creation-Date: 2024-10-29 09:34+0200\n"
-"PO-Revision-Date: 2025-01-03 15:11+0200\n"
+"PO-Revision-Date: 2025-01-15 17:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : "
-"2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: esto-payment.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
-"esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;"
+"__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
@@ -60,8 +59,7 @@ msgstr ""
 #: assets/view/calculator-settings.php:163 assets/view/calculator-settings.php:177
 #, php-format
 msgid ""
-"%s will be replaced by monthly payment value, for instance \"Monthly payment from %s\" will become \"Monthly "
-"payment from 7.4€ / 6 months\". Leave empty to use default text."
+"%s will be replaced by monthly payment value, for instance \"Monthly payment from %s\" will become \"Monthly payment from 7.4€ / 6 months\". Leave empty to use default text."
 msgstr ""
 
 #: assets/view/calculator-settings.php:176
@@ -110,8 +108,7 @@ msgid "Ensure product price is sufficiently high"
 msgstr ""
 
 #: assets/view/calculator-settings.php:251
-msgid ""
-"Try inserting the shortcode [esto_monthly_payment] at your chosen location in product loop or single view template"
+msgid "Try inserting the shortcode [esto_monthly_payment] at your chosen location in product loop or single view template"
 msgstr ""
 
 #: assets/view/calculator.php:12
@@ -154,8 +151,8 @@ msgstr "Литва"
 msgid "Latvia"
 msgstr ""
 
-#: includes/Payment.php:143 includes/class-wc-esto-card-payment.php:49 includes/class-wc-esto-pay-payment.php:56
-#: includes/class-wc-esto-x-payment.php:52 includes/class-wc-pay-later-payment.php:38
+#: includes/Payment.php:143 includes/class-wc-esto-card-payment.php:49 includes/class-wc-esto-pay-payment.php:56 includes/class-wc-esto-x-payment.php:52
+#: includes/class-wc-pay-later-payment.php:38
 msgid "Enable/Disable"
 msgstr ""
 
@@ -163,13 +160,13 @@ msgstr ""
 msgid "Enable ESTO payment module"
 msgstr ""
 
-#: includes/Payment.php:149 includes/class-wc-esto-card-payment.php:55 includes/class-wc-esto-pay-payment.php:62
-#: includes/class-wc-esto-x-payment.php:58 includes/class-wc-pay-later-payment.php:44
+#: includes/Payment.php:149 includes/class-wc-esto-card-payment.php:55 includes/class-wc-esto-pay-payment.php:62 includes/class-wc-esto-x-payment.php:58
+#: includes/class-wc-pay-later-payment.php:44
 msgid "Title"
 msgstr ""
 
-#: includes/Payment.php:151 includes/class-wc-esto-card-payment.php:57 includes/class-wc-esto-pay-payment.php:64
-#: includes/class-wc-esto-x-payment.php:60 includes/class-wc-pay-later-payment.php:46
+#: includes/Payment.php:151 includes/class-wc-esto-card-payment.php:57 includes/class-wc-esto-pay-payment.php:64 includes/class-wc-esto-x-payment.php:60
+#: includes/class-wc-pay-later-payment.php:46
 msgid "This controls the title which the user sees during checkout."
 msgstr "Это управляет названием, которое пользователь видит во время оформления заказа."
 
@@ -177,13 +174,13 @@ msgstr "Это управляет названием, которое польз�
 msgid "ESTO hire purchase"
 msgstr "Pассрочка ESTO"
 
-#: includes/Payment.php:155 includes/class-wc-esto-card-payment.php:61 includes/class-wc-esto-pay-payment.php:68
-#: includes/class-wc-esto-x-payment.php:64 includes/class-wc-pay-later-payment.php:50
+#: includes/Payment.php:155 includes/class-wc-esto-card-payment.php:61 includes/class-wc-esto-pay-payment.php:68 includes/class-wc-esto-x-payment.php:64
+#: includes/class-wc-pay-later-payment.php:50
 msgid "Description"
 msgstr ""
 
-#: includes/Payment.php:157 includes/class-wc-esto-card-payment.php:63 includes/class-wc-esto-pay-payment.php:70
-#: includes/class-wc-esto-x-payment.php:66 includes/class-wc-pay-later-payment.php:52
+#: includes/Payment.php:157 includes/class-wc-esto-card-payment.php:63 includes/class-wc-esto-pay-payment.php:70 includes/class-wc-esto-x-payment.php:66
+#: includes/class-wc-pay-later-payment.php:52
 msgid "This controls the description which the user sees during checkout."
 msgstr ""
 
@@ -318,9 +315,7 @@ msgid "Only specific countries"
 msgstr ""
 
 #: includes/Payment.php:276
-msgid ""
-"Specify countries where this payment method is available. Takes priority over \"disabled countries\". Leave empty "
-"to sell everywhere."
+msgid "Specify countries where this payment method is available. Takes priority over \"disabled countries\". Leave empty to sell everywhere."
 msgstr ""
 
 #: includes/Payment.php:280
@@ -352,8 +347,7 @@ msgid "Order prefix"
 msgstr ""
 
 #: includes/Payment.php:306
-msgid ""
-"A prefix to add to all future order numbers done via this payment method. Prefix \"T\" makes order ID \"T-12345\""
+msgid "A prefix to add to all future order numbers done via this payment method. Prefix \"T\" makes order ID \"T-12345\""
 msgstr ""
 
 #: includes/Payment.php:313
@@ -419,12 +413,10 @@ msgid "Card payment (ESTO Pay)"
 msgstr ""
 
 #: includes/class-wc-esto-card-payment.php:27 includes/class-wc-esto-card-payment.php:51
-msgid ""
-"ESTO Pay card payments are Visa and Mastercard credit/debit card payments. Contact ESTO Partner Support for "
-"additional information and activation."
+msgid "ESTO Pay card payments are Visa and Mastercard credit/debit card payments. Contact ESTO Partner Support for additional information and activation."
 msgstr ""
-"ESTO Pay платежи по картам представляют собой платежи по кредитным/дебетовым картам Visa и Mastercard. За "
-"дополнительной информацией и активацией обращайтесь в службу поддержки клиентов ESTO."
+"ESTO Pay платежи по картам представляют собой платежи по кредитным/дебетовым картам Visa и Mastercard. За дополнительной информацией и активацией обращайтесь в службу поддержки "
+"клиентов ESTO."
 
 #: includes/class-wc-esto-card-payment.php:58
 msgid "Pay by card (Visa/Mastercard)"
@@ -435,9 +427,7 @@ msgid "Payment is made using a secure payment solution."
 msgstr "Платёж осуществлён с использованием защищённого платёжного решения."
 
 msgid "Payment is made using a secure payment solution called “Klix by Citadele” (AS “Citadele banka” Eesti filiaal)"
-msgstr ""
-"Оплата производится с использованием безопасного платежного решения «Klix by Citadele» (AS «Citadele banka» Eesti "
-"filiaal)."
+msgstr "Оплата производится с использованием безопасного платежного решения «Klix by Citadele» (AS «Citadele banka» Eesti filiaal)."
 
 #: includes/class-wc-esto-card-payment.php:69
 msgid "Show Visa/Mastercard logo in checkout"
@@ -448,25 +438,20 @@ msgid "ESTO Pay"
 msgstr "ESTO Pay"
 
 #: includes/class-wc-esto-pay-payment.php:32
-msgid ""
-"ESTO Pay bank payments are a direct payment method for all Baltic and Finnish banklinks. Contact ESTO Partner "
-"Support for additional information and activation."
+msgid "ESTO Pay bank payments are a direct payment method for all Baltic and Finnish banklinks. Contact ESTO Partner Support for additional information and activation."
 msgstr ""
-"ESTO Pay - это прямой способ оплаты для кредитных и дебетовых карт, банковских ссылок и т.д. За дополнительной "
-"информацией и активацией обращайтесь в службу поддержки клиентов ESTO."
+"ESTO Pay - это прямой способ оплаты для кредитных и дебетовых карт, банковских ссылок и т.д. За дополнительной информацией и активацией обращайтесь в службу поддержки клиентов "
+"ESTO."
 
 #: includes/class-wc-esto-pay-payment.php:37
 msgid "ESTO Pay payment gateway"
 msgstr ""
 
 #: includes/class-wc-esto-pay-payment.php:58
-msgid ""
-"ESTO Pay is a direct payment method for credit cards, banklinks, etc. Contact ESTO support for additional "
-"information."
+msgid "ESTO Pay is a direct payment method for credit cards, banklinks, etc. Contact ESTO support for additional information."
 msgstr ""
-"Платите через банковскую ссылку SEB, Swedbank, LHV, Coop, Luminor или Citadele. Возможность совершить платеж через "
-"Revolut. Еще Вы можете оплатить ссылкой на банк Латвии, Литвы и Финляндии. Безопасные и удобные решения Вам "
-"гарантирует ESTO Pay."
+"Платите через банковскую ссылку SEB, Swedbank, LHV, Coop, Luminor или Citadele. Возможность совершить платеж через Revolut. Еще Вы можете оплатить ссылкой на банк Латвии, Литвы "
+"и Финляндии. Безопасные и удобные решения Вам гарантирует ESTO Pay."
 
 #: includes/class-wc-esto-pay-payment.php:65
 msgid "Pay in the bank"
@@ -534,15 +519,9 @@ msgstr "Esto X"
 
 #: includes/class-wc-esto-x-payment.php:24
 #, fuzzy
-#| msgid ""
-#| "ESTO X is an alternative ESTO payment method. For more information and activation please contact ESTO Partner "
-#| "Support."
-msgid ""
-"ESTO X is an alternative ESTO payment method. For more information and activation, please contact ESTO Partner "
-"Support."
-msgstr ""
-"ESTO X – это альтернативный метод оплаты от компании ESTO. Для получения более подробной информации и активации "
-"свяжитесь со службой поддержки ESTO."
+#| msgid "ESTO X is an alternative ESTO payment method. For more information and activation please contact ESTO Partner Support."
+msgid "ESTO X is an alternative ESTO payment method. For more information and activation, please contact ESTO Partner Support."
+msgstr "ESTO X – это альтернативный метод оплаты от компании ESTO. Для получения более подробной информации и активации свяжитесь со службой поддержки ESTO."
 
 #: includes/class-wc-esto-x-payment.php:32
 msgid "ESTO X payment gateway"
@@ -558,8 +537,7 @@ msgstr "Платите 3-мя равными частями. Без дополн
 
 #: includes/class-wc-esto-x-payment.php:67
 msgid "ESTO 3 - pay without additional cost within 3 months! Just pay later."
-msgstr ""
-"ESTO 3 - совершайте платежи без дополнительных комиссий в течение трех месяцев! Покупайте сейчас - платите позже."
+msgstr "ESTO 3 - совершайте платежи без дополнительных комиссий в течение трех месяцев! Покупайте сейчас - платите позже."
 
 #: includes/class-wc-esto-x-payment.php:70
 msgid "Show calculator"
@@ -579,12 +557,8 @@ msgid "Pay Later"
 msgstr ""
 
 #: includes/class-wc-pay-later-payment.php:19
-msgid ""
-"Pay Later is an alternative ESTO payment method. For more information and activation please contact ESTO Partner "
-"Support."
-msgstr ""
-"Pay Later (в пер. «Платите позже») – это метод оплаты от компании ESTO. Для получения более подробной информации и "
-"активации свяжитесь со службой поддержки ESTO."
+msgid "Pay Later is an alternative ESTO payment method. For more information and activation please contact ESTO Partner Support."
+msgstr "Pay Later (в пер. «Платите позже») – это метод оплаты от компании ESTO. Для получения более подробной информации и активации свяжитесь со службой поддержки ESTO."
 
 #: includes/class-wc-pay-later-payment.php:24
 msgid "ESTO Pay Later payment gateway"
@@ -600,9 +574,7 @@ msgstr "Платите позже"
 
 #: includes/class-wc-pay-later-payment.php:53
 msgid "Just confirm your order with 3 clicks and take your time! Pay later, within 30 days, without any extra fees!"
-msgstr ""
-"Просто подтвердите свой заказ в три клика и расслабьтесь. Заплатить за заказ можно позже, в течение 30 дней, без "
-"дополнительных плат!"
+msgstr "Просто подтвердите свой заказ в три клика и расслабьтесь. Заплатить за заказ можно позже, в течение 30 дней, без дополнительных плат!"
 
 #: woo-includes/class-woothemes-plugin-updater.php:147
 msgid "WooThemes Updates"
@@ -630,9 +602,7 @@ msgstr ""
 
 #: woo-includes/class-woothemes-plugin-updater.php:240
 #, php-format
-msgid ""
-"You are currently logged in as %1$s. To switch to a different WooThemes account, please fill in the login details "
-"below."
+msgid "You are currently logged in as %1$s. To switch to a different WooThemes account, please fill in the login details below."
 msgstr ""
 
 #: woo-includes/class-woothemes-plugin-updater.php:243
@@ -680,53 +650,60 @@ msgstr ""
 msgid "www.rebing.ee"
 msgstr ""
 
+msgid "ESTO Deals"
+msgstr "ESTO Deals"
+
+msgid "Enable ESTO Deals tracking to monitor completed purchases from Deals. Tracking triggers only when an order is paid and no personal data is shared."
+msgstr "Включите отслеживание ESTO Deals, чтобы отслеживать завершенные покупки по Deals. Отслеживание активируется только при оплате заказа, и персональные данные не передаются."
+
+msgid "Deals Tracking Settings"
+msgstr "Настройки отслеживания Deals"
+
+msgid "Enable Deals Tracking"
+msgstr "Включить отслеживание Deals"
+
+msgid "Settings saved. Tracking is enabled."
+msgstr "Настройки сохранены. Отслеживание включено."
+
+msgid "Settings saved. Tracking has been disabled."
+msgstr "Настройки сохранены. Отслеживание отключено."
+
 #~ msgid "Buy now, pay later!"
 #~ msgstr "Платите позжe!"
 
 #~ msgid ""
-#~ "Pay Later gives you an extra 30 days to pay for your order. Get the service or goods instantly and pay whenever "
-#~ "you like within the next 30 days, with no additional fees!"
+#~ "Pay Later gives you an extra 30 days to pay for your order. Get the service or goods instantly and pay whenever you like within the next 30 days, with no additional fees!"
 #~ msgstr ""
-#~ "Подтвердите ваш заказ yслуга \"Платите позжe\" дает тебе 30 дней дополнительного времени на оплату. Покупайте "
-#~ "товар или услугу сразу, а платите по желанию в течение последующих 30 дней без единого дополнительного расхода! "
-#~ "Без интресса!"
+#~ "Подтвердите ваш заказ yслуга \"Платите позжe\" дает тебе 30 дней дополнительного времени на оплату. Покупайте товар или услугу сразу, а платите по желанию в течение "
+#~ "последующих 30 дней без единого дополнительного расхода! Без интресса!"
 
 #~ msgid "Today"
 #~ msgstr "Сегодня"
 
-#~ msgid ""
-#~ "Pick a loan period that fits your budget and complete the purchase with digital signing (Mobile-ID, Smart-ID or "
-#~ "ID-card signature). Simple as that!"
+#~ msgid "Pick a loan period that fits your budget and complete the purchase with digital signing (Mobile-ID, Smart-ID or ID-card signature). Simple as that!"
 #~ msgstr ""
-#~ "Плати быстро и удобно в рассрочку! ESTO рассрочка так же безопасна и удобна, как оплата банковской ссылкой. "
-#~ "Подтвердите, что ваши личные условия видны, если вы хотите приобрести и зарегистрировать покупку с помощью "
-#~ "мобильного идентификатора, смарт-идентификатора или идентификационной карты. Покупкy в рассрочку обеспечивается "
-#~ "и управляется ESTO AS."
+#~ "Плати быстро и удобно в рассрочку! ESTO рассрочка так же безопасна и удобна, как оплата банковской ссылкой. Подтвердите, что ваши личные условия видны, если вы хотите "
+#~ "приобрести и зарегистрировать покупку с помощью мобильного идентификатора, смарт-идентификатора или идентификационной карты. Покупкy в рассрочку обеспечивается и управляется "
+#~ "ESTO AS."
 
 #~ msgid ""
-#~ "Make a payment from a bank account in SEB, Swedbank, LHV, Coop, Luminor or Citadele bank, or a Revolut payment. "
-#~ "Payments from Latvian, Lithuanian or Finnish banks available as well. These secure and convenient payment "
-#~ "methods are brought to you by ESTO Pay."
+#~ "Make a payment from a bank account in SEB, Swedbank, LHV, Coop, Luminor or Citadele bank, or a Revolut payment. Payments from Latvian, Lithuanian or Finnish banks available "
+#~ "as well. These secure and convenient payment methods are brought to you by ESTO Pay."
 #~ msgstr ""
-#~ "Платите через банковскую ссылку SEB, Swedbank, LHV, Coop, Luminor или Citadele. Возможность совершить платеж "
-#~ "через Revolut. Еще Вы можете оплатить ссылкой на банк Латвии, Литвы и Финляндии. Безопасные и удобные решения "
-#~ "Вам гарантирует ESTO Pay."
+#~ "Платите через банковскую ссылку SEB, Swedbank, LHV, Coop, Luminor или Citadele. Возможность совершить платеж через Revolut. Еще Вы можете оплатить ссылкой на банк Латвии, "
+#~ "Литвы и Финляндии. Безопасные и удобные решения Вам гарантирует ESTO Pay."
 
 #~ msgid ""
-#~ "ESTO 3 payment method allows you to make the payment in three equal instalments over a period of three months. "
-#~ "The sum of each monthly instalment is calculated by dividing the value of the shopping cart into three equal "
-#~ "parts. No interests. Early payment option always available. The payment method is provided and managed by ESTO "
-#~ "AS."
+#~ "ESTO 3 payment method allows you to make the payment in three equal instalments over a period of three months. The sum of each monthly instalment is calculated by dividing "
+#~ "the value of the shopping cart into three equal parts. No interests. Early payment option always available. The payment method is provided and managed by ESTO AS."
 #~ msgstr ""
-#~ "Способ оплаты ESTO 3 позволяет делать оплату тремя равными частями в течение трех месяцев. При оформлении "
-#~ "оплаты тремя частями, суммы ежемесячных платежей распределятся равномерно. Процентная ставка отсутствует. "
-#~ "Всегда можно сделать оплату досрочно. Способ оплаты предлагает ESTO AS."
+#~ "Способ оплаты ESTO 3 позволяет делать оплату тремя равными частями в течение трех месяцев. При оформлении оплаты тремя частями, суммы ежемесячных платежей распределятся "
+#~ "равномерно. Процентная ставка отсутствует. Всегда можно сделать оплату досрочно. Способ оплаты предлагает ESTO AS."
 
 #~ msgid "Payment solution – pay for your shopping cart in three equal instalments with no additional fees!"
 #~ msgstr ""
-#~ "Способ оплаты ESTO 3 позволяет делать оплату тремя равными частями в течение трех месяцев. При оформлении "
-#~ "оплаты тремя частями, суммы ежемесячных платежей распределятся равномерно. Процентная ставка отсутствует. "
-#~ "Всегда можно сделать оплату досрочно. Способ оплаты предлагает ESTO AS."
+#~ "Способ оплаты ESTO 3 позволяет делать оплату тремя равными частями в течение трех месяцев. При оформлении оплаты тремя частями, суммы ежемесячных платежей распределятся "
+#~ "равномерно. Процентная ставка отсутствует. Всегда можно сделать оплату досрочно. Способ оплаты предлагает ESTO AS."
 
 #~ msgid "Kuumakse al."
 #~ msgstr "Kuumakse al."

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Woocommerce ESTO\n"
 "POT-Creation-Date: 2024-10-29 09:49+0200\n"
-"PO-Revision-Date: 2025-01-03 15:07+0200\n"
+"PO-Revision-Date: 2025-01-15 17:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -15,8 +15,8 @@ msgstr ""
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: esto-payment.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;"
-"esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
@@ -59,8 +59,8 @@ msgstr ""
 #: assets/view/calculator-settings.php:163 assets/view/calculator-settings.php:177
 #, php-format
 msgid ""
-"%s will be replaced by monthly payment value, for instance \"Monthly payment from %s\" will become \"Monthly "
-"payment from 7.4€ / 6 months\". Leave empty to use default text."
+"%s will be replaced by monthly payment value, for instance \"Monthly payment from %s\" will become \"Monthly payment from 7.4€ / 6 months\". Leave empty "
+"to use default text."
 msgstr ""
 
 #: assets/view/calculator-settings.php:176
@@ -109,8 +109,7 @@ msgid "Ensure product price is sufficiently high"
 msgstr ""
 
 #: assets/view/calculator-settings.php:251
-msgid ""
-"Try inserting the shortcode [esto_monthly_payment] at your chosen location in product loop or single view template"
+msgid "Try inserting the shortcode [esto_monthly_payment] at your chosen location in product loop or single view template"
 msgstr ""
 
 #: assets/view/calculator.php:12
@@ -152,8 +151,8 @@ msgstr ""
 msgid "Latvia"
 msgstr ""
 
-#: includes/Payment.php:143 includes/class-wc-esto-card-payment.php:49 includes/class-wc-esto-pay-payment.php:56
-#: includes/class-wc-esto-x-payment.php:52 includes/class-wc-pay-later-payment.php:38
+#: includes/Payment.php:143 includes/class-wc-esto-card-payment.php:49 includes/class-wc-esto-pay-payment.php:56 includes/class-wc-esto-x-payment.php:52
+#: includes/class-wc-pay-later-payment.php:38
 msgid "Enable/Disable"
 msgstr ""
 
@@ -161,13 +160,13 @@ msgstr ""
 msgid "Enable ESTO payment module"
 msgstr ""
 
-#: includes/Payment.php:149 includes/class-wc-esto-card-payment.php:55 includes/class-wc-esto-pay-payment.php:62
-#: includes/class-wc-esto-x-payment.php:58 includes/class-wc-pay-later-payment.php:44
+#: includes/Payment.php:149 includes/class-wc-esto-card-payment.php:55 includes/class-wc-esto-pay-payment.php:62 includes/class-wc-esto-x-payment.php:58
+#: includes/class-wc-pay-later-payment.php:44
 msgid "Title"
 msgstr ""
 
-#: includes/Payment.php:151 includes/class-wc-esto-card-payment.php:57 includes/class-wc-esto-pay-payment.php:64
-#: includes/class-wc-esto-x-payment.php:60 includes/class-wc-pay-later-payment.php:46
+#: includes/Payment.php:151 includes/class-wc-esto-card-payment.php:57 includes/class-wc-esto-pay-payment.php:64 includes/class-wc-esto-x-payment.php:60
+#: includes/class-wc-pay-later-payment.php:46
 msgid "This controls the title which the user sees during checkout."
 msgstr ""
 
@@ -175,13 +174,13 @@ msgstr ""
 msgid "ESTO hire purchase"
 msgstr ""
 
-#: includes/Payment.php:155 includes/class-wc-esto-card-payment.php:61 includes/class-wc-esto-pay-payment.php:68
-#: includes/class-wc-esto-x-payment.php:64 includes/class-wc-pay-later-payment.php:50
+#: includes/Payment.php:155 includes/class-wc-esto-card-payment.php:61 includes/class-wc-esto-pay-payment.php:68 includes/class-wc-esto-x-payment.php:64
+#: includes/class-wc-pay-later-payment.php:50
 msgid "Description"
 msgstr ""
 
-#: includes/Payment.php:157 includes/class-wc-esto-card-payment.php:63 includes/class-wc-esto-pay-payment.php:70
-#: includes/class-wc-esto-x-payment.php:66 includes/class-wc-pay-later-payment.php:52
+#: includes/Payment.php:157 includes/class-wc-esto-card-payment.php:63 includes/class-wc-esto-pay-payment.php:70 includes/class-wc-esto-x-payment.php:66
+#: includes/class-wc-pay-later-payment.php:52
 msgid "This controls the description which the user sees during checkout."
 msgstr ""
 
@@ -314,9 +313,7 @@ msgid "Only specific countries"
 msgstr ""
 
 #: includes/Payment.php:276
-msgid ""
-"Specify countries where this payment method is available. Takes priority over \"disabled countries\". Leave empty "
-"to sell everywhere."
+msgid "Specify countries where this payment method is available. Takes priority over \"disabled countries\". Leave empty to sell everywhere."
 msgstr ""
 
 #: includes/Payment.php:280
@@ -348,8 +345,7 @@ msgid "Order prefix"
 msgstr ""
 
 #: includes/Payment.php:306
-msgid ""
-"A prefix to add to all future order numbers done via this payment method. Prefix \"T\" makes order ID \"T-12345\""
+msgid "A prefix to add to all future order numbers done via this payment method. Prefix \"T\" makes order ID \"T-12345\""
 msgstr ""
 
 #: includes/Payment.php:313
@@ -415,9 +411,7 @@ msgid "Card payment (ESTO Pay)"
 msgstr ""
 
 #: includes/class-wc-esto-card-payment.php:27 includes/class-wc-esto-card-payment.php:51
-msgid ""
-"ESTO Pay card payments are Visa and Mastercard credit/debit card payments. Contact ESTO Partner Support for "
-"additional information and activation."
+msgid "ESTO Pay card payments are Visa and Mastercard credit/debit card payments. Contact ESTO Partner Support for additional information and activation."
 msgstr ""
 
 #: includes/class-wc-esto-card-payment.php:58
@@ -438,8 +432,8 @@ msgstr ""
 
 #: includes/class-wc-esto-pay-payment.php:32
 msgid ""
-"ESTO Pay bank payments are a direct payment method for all Baltic and Finnish banklinks. Contact ESTO Partner "
-"Support for additional information and activation."
+"ESTO Pay bank payments are a direct payment method for all Baltic and Finnish banklinks. Contact ESTO Partner Support for additional information and "
+"activation."
 msgstr ""
 
 #: includes/class-wc-esto-pay-payment.php:37
@@ -447,9 +441,7 @@ msgid "ESTO Pay payment gateway"
 msgstr ""
 
 #: includes/class-wc-esto-pay-payment.php:58
-msgid ""
-"ESTO Pay is a direct payment method for credit cards, banklinks, etc. Contact ESTO support for additional "
-"information."
+msgid "ESTO Pay is a direct payment method for credit cards, banklinks, etc. Contact ESTO support for additional information."
 msgstr ""
 
 #: includes/class-wc-esto-pay-payment.php:65
@@ -457,8 +449,7 @@ msgid "Pay in the bank"
 msgstr ""
 
 msgid "Payment is made using a secure payment solution called “Klix by Citadele” (AS “Citadele banka” Eesti filiaal)"
-msgstr ""
-"Payment is made using a secure payment solution called “Klix by Citadele” (AS “Citadele banka” Eesti filiaal)."
+msgstr "Payment is made using a secure payment solution called “Klix by Citadele” (AS “Citadele banka” Eesti filiaal)."
 
 #: includes/class-wc-esto-pay-payment.php:74
 msgid "Show Logo"
@@ -521,9 +512,7 @@ msgid "Esto X"
 msgstr ""
 
 #: includes/class-wc-esto-x-payment.php:24
-msgid ""
-"ESTO X is an alternative ESTO payment method. For more information and activation, please contact ESTO Partner "
-"Support."
+msgid "ESTO X is an alternative ESTO payment method. For more information and activation, please contact ESTO Partner Support."
 msgstr ""
 
 #: includes/class-wc-esto-x-payment.php:32
@@ -560,9 +549,7 @@ msgid "Pay Later"
 msgstr ""
 
 #: includes/class-wc-pay-later-payment.php:19
-msgid ""
-"Pay Later is an alternative ESTO payment method. For more information and activation please contact ESTO Partner "
-"Support."
+msgid "Pay Later is an alternative ESTO payment method. For more information and activation please contact ESTO Partner Support."
 msgstr ""
 
 #: includes/class-wc-pay-later-payment.php:24
@@ -607,9 +594,7 @@ msgstr ""
 
 #: woo-includes/class-woothemes-plugin-updater.php:240
 #, php-format
-msgid ""
-"You are currently logged in as %1$s. To switch to a different WooThemes account, please fill in the login details "
-"below."
+msgid "You are currently logged in as %1$s. To switch to a different WooThemes account, please fill in the login details below."
 msgstr ""
 
 #: woo-includes/class-woothemes-plugin-updater.php:243
@@ -656,3 +641,21 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "www.rebing.ee"
 msgstr ""
+
+msgid "ESTO Deals"
+msgstr "ESTO Deals"
+
+msgid "Enable ESTO Deals tracking to monitor completed purchases from Deals. Tracking triggers only when an order is paid and no personal data is shared."
+msgstr "Enable ESTO Deals tracking to monitor completed purchases from Deals. Tracking triggers only when an order is paid and no personal data is shared."
+
+msgid "Deals Tracking Settings"
+msgstr "Deals Tracking Settings"
+
+msgid "Enable Deals Tracking"
+msgstr "Enable Deals Tracking"
+
+msgid "Settings saved. Tracking is enabled."
+msgstr "Settings saved. Tracking is enabled."
+
+msgid "Settings saved. Tracking has been disabled."
+msgstr "Settings saved. Tracking has been disabled."

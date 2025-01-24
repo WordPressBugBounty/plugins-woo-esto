@@ -4,7 +4,7 @@
   Plugin Name: Woocommerce ESTO
   Plugin URI:  https://www.esto.ee
   Description: Adds ESTO redirect link to a Woocommerce instance
-  Version:     2.25.9
+  Version:     2.25.11
   Author:      Mikk Mihkel Nurges, Rebing OÜ
   Author URI:  www.rebing.ee
   License:     GPL2
@@ -145,7 +145,7 @@ function esto_gateway_blocks()
 function esto_add_action_links($links)
 {
     $plugin_links = [
-        '<a href="' . admin_url('admin.php?page=wc-settings&tab=checkout&section=esto') . '">' . __('Settings', 'woo-esto') . '</a>',
+        '<a href="' . admin_url('admin.php?page=wc-settings&tab=checkout&section=esto') . '">' . __('Settings', 'woo-esto') . '</a> | <a href="' . admin_url('admin.php?page=esto-deals') . '">' . __('Deals settings', 'woo-esto') . '</a>',
     ];
     return array_merge($links, $plugin_links);
 }
@@ -369,3 +369,11 @@ add_filter('woocommerce_gateway_title', function ($title, $gateway_id) {
     }
     return $title;
 }, 10, 2);
+
+/**
+ * Esto Deals support.
+ */
+require_once plugin_dir_path(__FILE__) . 'includes/class-esto-deals.php';
+if (class_exists('Esto_Deals')) {
+    new Esto_Deals();
+}

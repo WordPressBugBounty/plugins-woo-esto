@@ -251,24 +251,24 @@ class WC_Esto_Pay_Payment extends WC_Esto_Payment
 
         ?>
         <select class="esto-pay-countries">
-            <?php foreach ($countries as $country_code => $country_name) : ?>
+		    <?php foreach ($countries as $country_code => $country_name) : ?>
                 <option value="<?= $country_code ?>"<?php selected($default_country, $country_code, true) ?>><?= $country_name ?></option>
-            <?php endforeach; ?>
+		    <?php endforeach; ?>
         </select>
 
         <div class="esto-pay-logos esto-pay-logos-layout-<?= $layout ?>">
             <input type="hidden" name="esto_pay_bank_selection" value="">
-            <?php foreach ($logos as $country_key => $country_logos) :
-                $style = $country_key != $default_country ? ' style="display: none;"' : '';
-                ?>
+		    <?php foreach ($logos as $country_key => $country_logos) :
+			    $style = $country_key != $default_country ? ' style="display: none;"' : '';
+			    ?>
                 <div class="esto-pay-logos__country esto-pay-logos__country--<?= $country_key ?>"<?= $style ?>>
-                    <?php foreach ($country_logos as $logo) : ?>
+				    <?php foreach ($country_logos as $logo) : ?>
                         <div class="esto-pay-logo esto-pay-logo__<?= strtolower($logo->name) ?>" data-bank-id="<?= $logo->key ?>">
-                            <img src="<?= apply_filters('woo_esto_banklink_logo', $logo->logo_url, $logo->key, $country_key) ?>">
+                            <img class="esto-pay-banklink-logo" src="<?= apply_filters('woo_esto_banklink_logo', $logo->logo_url, $logo->key, $country_key) ?>">
                         </div>
-                              <?php endforeach; ?>
+				    <?php endforeach; ?>
                 </div>
-                  <?php endforeach; ?>
+		    <?php endforeach; ?>
         </div>
         <?php
     }
