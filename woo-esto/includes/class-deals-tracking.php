@@ -81,10 +81,16 @@ class Deals_Tracking
             return;
         }
 
+        if ($order->get_total_tax() > 0) {
+            $order_total_ex_vat = $order->get_total() - $order->get_total_tax() - $order->get_shipping_total();
+        } else {
+            $order_total_ex_vat = $order->get_total() - $order->get_shipping_total();
+        }
+
         // Prepare tracking data
         $efOrder = [
             'oid' => $order_id,
-            'amt' => $order->get_total(),
+            'amt' => $order_total_ex_vat,
             'cc' => implode(',', $order->get_coupon_codes() ?: []),
             'items' => [],
         ];
@@ -95,16 +101,17 @@ class Deals_Tracking
             $efOrder['items'][] = [
                 'ps' => $product->get_name() . (!empty($product->get_sku()) ? ' (' . $product->get_sku() . ')' : ''),
                 'qty' => $item->get_quantity(),
-                'p' => $order->get_line_total($item, true, true),
+                'p' => number_format($order->get_line_total($item, false, true), 2, '.', ''),
             ];
         }
+
 
         // Output Everflow tracking script
         echo '<script type="text/javascript" src="https://www.epbdf8trk.com/scripts/sdk/everflow.js"></script>';
         echo '<script type="text/javascript">
             EF.conversion({
                 aid: ' . intval($advertiser_id) . ',
-                amount: ' . ($order->get_total() - $order->get_shipping_total()) . ',
+                amount: ' . number_format($order_total_ex_vat, 2, '.', '') . ',
                 order_id: "' . esc_js($order_id) . '",
                 order: ' . json_encode($efOrder) . ',
             });

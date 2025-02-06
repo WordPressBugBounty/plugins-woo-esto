@@ -1,6 +1,6 @@
 === Woocommerce ESTO ===
 Contributors: rebing
-Stable tag: 2.25.11
+Stable tag: 2.25.12
 Requires at least: 4.2
 Tested up to: 6.7.1
 Requires PHP: 7.3
@@ -34,6 +34,10 @@ PRODUCT CALCULATOR
 5. Uncomment the required line in '<plugin_url>/includes/Calculator.php'@display_calculator
 
 == Changelog ==
+
+= 2.25.12 =
+* Changed --- ESTO deals improvements
+* Changed --- Icons dimensions fix
 
 = 2.25.11 =
 * Added --- ESTO Deals setup
