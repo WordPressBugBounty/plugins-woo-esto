@@ -429,6 +429,11 @@ class EstoRequest
             $data['schedule_type'] = $this->settings->schedule_type;
         }
 
+
+        if ($this->order->get_payment_method() === 'esto_card') {
+            $data['payment_method_key'] = 'STRIPE_CARD';
+        }
+
         return $data;
     }
 
